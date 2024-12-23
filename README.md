@@ -15,7 +15,6 @@
     <h4 style="color: #333;">Vue 基础教程</h4>
     <p style="color: #666; font-weight: 100;">通过系统学习 Vue.js，帮助你了解前端工程化，构建高效、可维护的前端应用。</p>
   </a>
-
   <a href="#/notes/docker.md" style="text-decoration: none; width: 280px; padding: 20px; border: 1px solid #ddd; border-radius: 10px; background-color: rgba(240, 250, 240, 0.42); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); text-align: center;margin-top:30px;">
     <h4 style="color: #333;">Docker技术入门与实战</h4>
     <p style="color: #666; font-weight: 100;">快速掌握Docker容器概念以及相关命令。</p>
@@ -60,19 +59,22 @@
 
 ## 📚 我的项目
 
-- [GitBook 博客](https://github.com/your-repo)  
+- [GitBook 博客](https://github.com/xinghai2524/xinghai2524.github.io)  
   我使用 GitBook 搭建的个人博客，包含技术文章和开发笔记，欢迎访问。
   
-- [Python 工具箱](https://github.com/your-repo)  
-  各种常用 Python 脚本和工具，适用于日常开发工作，帮助提升编程效率。
+- [Flask_Ai](https://github.com/xinghai-org/flask_ai)  
+  flask期末作业
+
+- [Django 购物网站](https://github.com/xinghai-org/Django_server)  
+  2023 网页设计作业
 
 ---
 
 ## 📧 联系我
 
-- 邮箱：[your-email@example.com](mailto:your-email@example.com)
-- GitHub：[我的 GitHub](https://github.com/your-username)
-- Twitter：[我的 Twitter](https://twitter.com/your-username)
+- 邮箱：[xinghai2524@outlook.com](xinghai2524@outlook.com)
+- GitHub：[我的 GitHub](https://github.com/xinghai-org)
+- 博客：[我的 博客](https://xinghai2524.github.io)
 
 ---
 
