@@ -6,9 +6,9 @@
 
 ## 文档导航
 
-### 🔧 技术教程
+### 🚀 推荐
 
-在这里，你将找到一些关于编程、开发工具和技术栈的实用教程。无论你是初学者还是有经验的开发者，这些教程都将帮助你深入了解技术细节，提升编程效率和开发能力。
+在这里，你将找到一些关于编程、开发工具和技术栈的实用教程。无论你是初学者还是有经验的开发者，这些教程都将帮助你深入了解技术细节，提升编程效率和开发能力
 
 <div style="display: flex; justify-content: space-evenly; flex-wrap: wrap; gap:10px">
   <a href="#/notes/Vue.md" style="text-decoration: none; width: 280px; padding: 20px; border: 1px solid #ddd; border-radius: 10px; background-color: rgba(240, 250, 240, 0.42); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); text-align: center;margin-top:30px;">
@@ -40,18 +40,19 @@
   </a>
 </div>
 
-### 📚 项目文档
+### 📚 分类
 
 我在项目开发过程中总结了一些常见问题和解决方案。希望这些文档能够帮助你在工作中更高效地解决问题。
 
 <div style="display: flex; justify-content: space-evenly; flex-wrap: wrap; gap:10px">
-  <a href="#/notes/Vue.md" style="text-decoration: none; width: 280px; padding: 20px; border: 1px solid #ddd; border-radius: 10px; background-color: rgba(240, 250, 240, 0.42); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); text-align: center;margin-top:30px;">
-    <h4 style="color: #333;">Vue 基础教程</h4>
-    <p style="color: #666; font-weight: 100;">通过系统学习 Vue.js，帮助你了解前端工程化，构建高效、可维护的前端应用。</p>
+  <a href="#/notes/" style="text-decoration: none; width: 280px; padding: 20px; border: 1px solid #ddd; border-radius: 10px; background-color: rgba(240, 250, 240, 0.42); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); text-align: center;margin-top:30px;">
+    <h4 style="color: #333;line-height:90px">技术教程</h4>
   </a>
-
   <a href="#/project/" style="text-decoration: none; width: 280px; padding: 20px; border: 1px solid #ddd; border-radius: 10px; background-color: rgba(240, 250, 240, 0.42); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); text-align: center;margin-top:30px;">
-    <h4 style="color: #333;line-height:90px">>>更多...</h4>
+    <h4 style="color: #333;line-height:90px">项目文档</h4>
+  </a>
+  <a href="#/public/" style="text-decoration: none; width: 280px; padding: 20px; border: 1px solid #ddd; border-radius: 10px; background-color: rgba(240, 250, 240, 0.42); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); text-align: center;margin-top:30px;">
+    <h4 style="color: #333;line-height:90px">笔记</h4>
   </a>
 </div>
 
