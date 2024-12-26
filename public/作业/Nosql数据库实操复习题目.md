@@ -147,3 +147,88 @@ db.dropDatabase()
 ```
 
 ![image-20241226163530221](https://db.xinghai.ink/Typora/17352022114406822.png)
+
+
+
+# Redis数据库实操复习题目
+
+-- 设置一个名为user:name的字符串链，值为张三,并查看值
+
+```
+set user:1 'name'
+keys *
+```
+
+![image-20241226174751446](https://db.xinghai.ink/Typora/17352066915209064.png)
+
+-- 向名为fruits的类表中依次添加元素 apple bnana cherry,并获取长度以及所有元素
+
+```
+rpush fruits apple bnana cherry
+llen fruits
+lrange fruits 0 -1
+```
+
+![image-20241226174814994](https://db.xinghai.ink/Typora/1735206692923543.png)
+
+-- 在名为scores的有序集合中，添加成员 student1，分值为85，student2 分值为90 student3 分值为78，并按照分值从高到低获取前两名成员
+
+```
+zadd scores 85 student1 90 student2 78 student3
+zrevrange scores 0 1 withscores
+```
+
+![image-20241226174835238](https://db.xinghai.ink/Typora/17352066949729555.png)
+
+-- 创建一个book的哈希表 表title为Redis实战，author 为 ’某作者‘ publisher为 ’某出版社‘,然后获取所有值和字段
+
+```
+hset book title 'Redis实战' author '某作者' publisher '某出版社'
+hgetall book
+```
+
+![image-20241226174950496](https://db.xinghai.ink/Typora/17352067042738535.png)
+
+-- 将active添加到status的集合中，再判断active是否在集合中
+
+```
+sadd status active
+sismember status active
+```
+
+![image-20241226175008734](https://db.xinghai.ink/Typora/173520669917816.png)
+
+-- 查看redis，user开头的键
+
+```
+keys user:*
+```
+
+![image-20241226175017553](https://db.xinghai.ink/Typora/17352067145968876.png)
+
+-- 设置名为 user:name 的键，设置过期时间为60秒，然后查看过期剩余时间
+
+```
+expire user:1 60
+ttl user:1
+```
+
+![image-20241226175032956](https://db.xinghai.ink/Typora/1735206717737701.png)
+
+-- 重命名user:1:name的键重命名为user:1:fullname,并查新的键的值
+
+```
+set user:1 fullname
+get user:1
+```
+
+![image-20241226175048923](https://db.xinghai.ink/Typora/1735206721759027.png)
+
+--  删除名为 fruits的列表
+
+```
+del fruits
+```
+
+
+![image-20241226175058195](https://db.xinghai.ink/Typora/17352067246307147.png)
