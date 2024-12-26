@@ -3,7 +3,7 @@
 /* 保持文档全局样式不变 */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f9f9f9; /* 淡灰色背景 */
+    background-color: #fafdf74d; /* 淡灰色背景 */
     color: #333; /* 默认文字颜色 */
     line-height: 1.6; /* 增加行间距 */
     margin: 0;

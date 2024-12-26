@@ -8,7 +8,7 @@
 
 ### 📝 2024年12月
 
-- **[MySql启用远程连接，以及权限管理](/project/mysql.md)**	`2024-12-26` `Mongodb`
+- **[Nosql数据库实操复习题目](/public/作业/Nosql数据库实操复习题目)**	`2024-12-26` `Mongodb` `Redis` `Neo4j`
   
 - **[Python 编程技巧](/project/python-tips.md)**  
 
