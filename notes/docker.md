@@ -930,7 +930,7 @@ docker [container] attach [--detach-keys[=[]]] [--no-stdin] [--sig-proxy=[=true]
 
 比如
 
-![image-20240730091213397](https://r2.xinghai2524.us.kg/Typora/17349907242212772.png)
+![image-20240730091213397](https://db.xinghai.ink/Typora/17349907242212772.png)
 
 这是两个终端，同时用attach进入同一个容器的情况，可以发现，如果操作其中一个终端，那么另一个终端都是同步的，也就相当于他们在操作同一个终端，那么如果终端堵塞了，那么个堵塞也会同步到所有终端当中，为了解决这个问题，docker提供了一个更加便捷的命令
 

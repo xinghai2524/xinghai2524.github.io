@@ -4,7 +4,7 @@
 
 NoSql表示的是非关系型数据库，其代表产品有很多
 
-![image-20240812210229084](https://r2.xinghai2524.us.kg/Typora/17349911585442345.png)
+![image-20240812210229084](https://db.xinghai.ink/Typora/17349911585442345.png)
 
 **其中MongoDB是最像关系型数据库的非关系型数据库**
 

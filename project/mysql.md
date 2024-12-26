@@ -10,15 +10,15 @@
 
 打开[官网](https://dev.mysql.com/downloads/)，选择apt仓库
 
-![image-20240820093802928](https://r2.xinghai2524.us.kg/Typora/17349915041358533.png)
+![image-20240820093802928](https://db.xinghai.ink/Typora/17349915041358533.png)
 
 下载仓库
 
-![image-20240820093901108](https://r2.xinghai2524.us.kg/Typora/17349915100830595.png)
+![image-20240820093901108](https://db.xinghai.ink/Typora/17349915100830595.png)
 
 将deb包传入Linux
 
-![image-20240820094006086](https://r2.xinghai2524.us.kg/Typora/17349915146093204.png)
+![image-20240820094006086](https://db.xinghai.ink/Typora/17349915146093204.png)
 
 用apt命令安装deb仓库包
 

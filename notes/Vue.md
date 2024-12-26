@@ -54,7 +54,7 @@
 
 **效果**
 
-![image-20241116200949103](https://r2.xinghai2524.us.kg/Typora/1734987107788057.png)
+![image-20241116200949103](https://db.xinghai.ink/Typora/1734987107788057.png)
 
 ## **v-cloak**
 
@@ -97,7 +97,7 @@
 
 **效果**
 
-![image-20241116203952161](https://r2.xinghai2524.us.kg/Typora/17349869744435828.png)
+![image-20241116203952161](https://db.xinghai.ink/Typora/17349869744435828.png)
 
 ### 绑定class属性的方法
 
@@ -522,7 +522,7 @@
 
 在开发中，可能会需要一次性隐藏很多个标签，然而，如果在某个标签上面使用v-if，然后在这个标签下添加多个div标签也能实现效果，但是实际上他还是控制单个标签的隐藏，如果想要隐藏多个标签，则可以使用template标签作为多个标签的父标签，再控制父标签，使用template，并不会显示这个标签，而是直接将多个标签显示出来，从而去除了父标签
 
-![image-20241117214056613](https://r2.xinghai2524.us.kg/Typora/17349869888366692.png)
+![image-20241117214056613](https://db.xinghai.ink/Typora/17349869888366692.png)
 
 ### v-show
 
@@ -695,7 +695,7 @@ v-for支持许多类型
 
 效果
 
-![image-20241117235140966](https://r2.xinghai2524.us.kg/Typora/17349869978794165.png)
+![image-20241117235140966](https://db.xinghai.ink/Typora/17349869978794165.png)
 
 ### 数组的更新检测
 
@@ -1261,7 +1261,7 @@ vue create <项目名称>
 
 目录下面有这些文件
 
-![image-20241120000000784](https://r2.xinghai2524.us.kg/Typora/173498701076498.png)
+![image-20241120000000784](https://db.xinghai.ink/Typora/173498701076498.png)
 
 - node_models，用来存放第三方包的文件，也就是用npm install 不添加-g的时候，包会下载到这里
 - public，项目的一些资源，这些资源并不会参与打包，打包的意思就是将vue文件打包成js文件这样，打包会生成一个新的文件夹
@@ -1313,7 +1313,7 @@ dev的意思就是用vite去启动service
 
 需要在vite.config.js中配置base为'./'，也就是，当前目录
 
-![image-20241120011038976](https://r2.xinghai2524.us.kg/Typora/17349870184595222.png)
+![image-20241120011038976](https://db.xinghai.ink/Typora/17349870184595222.png)
 
 配置完成后输入打包命令
 
@@ -1323,7 +1323,7 @@ npm run build
 
 然后再目录下，找到dist的index，然后打开
 
-![image-20241120011143721](https://r2.xinghai2524.us.kg/Typora/1734987025409743.png)
+![image-20241120011143721](https://db.xinghai.ink/Typora/1734987025409743.png)
 
 好了，就这样
 
@@ -1426,7 +1426,7 @@ div[nana]{}
 
 在Vue当中，如果设置了scoped标记，vue会给应该生效的标签自动添加一个唯一的属性，例如
 
-![image-20241120103658909](https://r2.xinghai2524.us.kg/Typora/17349870328049679.png)
+![image-20241120103658909](https://db.xinghai.ink/Typora/17349870328049679.png)
 
 这个标签的`data-v68aa8fa7`就是vue添加的，这样就能隔离组件之间的样式
 
@@ -1663,7 +1663,7 @@ export default {
 
 这里看一下运行结果
 
-![image-20241126210901844](https://r2.xinghai2524.us.kg/Typora/17349870409362245.png)
+![image-20241126210901844](https://db.xinghai.ink/Typora/17349870409362245.png)
 
 可以看到，每个插槽虽然名称一样，但是对应的节点的属性有可能是不一样的，所以我们可以利用这一点，让插槽里的内容显示插槽的属性的某个内容
 
@@ -1681,7 +1681,7 @@ export default {
 
 效果
 
-![image-20241126211045279](https://r2.xinghai2524.us.kg/Typora/17349870467520888.png)
+![image-20241126211045279](https://db.xinghai.ink/Typora/17349870467520888.png)
 
 拓展
 

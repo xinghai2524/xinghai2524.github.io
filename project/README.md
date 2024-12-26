@@ -4,6 +4,16 @@
 
 ---
 
+### 📝 实用技术与工具
+
+- **[MySql启用远程连接，以及权限管理](/project/mysql.md)**  
+  解决 React.js 中的常见问题与性能优化。
+
+- **[Python 编程技巧](/project/python-tips.md)**  
+  提高 Python 编程效率的实用技巧。
+
+---
+
 ### 🛠️ 见问题与解决方案
 
 - **[Docker 容器化问题及解决](/project/docker.md)**  
@@ -17,16 +27,6 @@
 
 - **[HDFS 配置与问题排查](/project/hdfs搭建.md)**  
   配置 HDFS，并排查常见问题。
-
----
-
-### 📝 实用技术与工具
-
-- **[React.js 常见问题与优化](/project/react.md)**  
-  解决 React.js 中的常见问题与性能优化。
-
-- **[Python 编程技巧](/project/python-tips.md)**  
-  提高 Python 编程效率的实用技巧。
 
 ---
 
