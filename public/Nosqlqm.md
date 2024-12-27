@@ -159,3 +159,36 @@ db.subjects.aggregate([
 ]);
 ```
 
+# 第二题
+
+> 改学号和名字，注意看题
+
+-- 使用 Redis 客户端连接到本地 Redis 服务器，设置一个名为 “customer” 的字符串键，值为 “自己的姓名简写+学号后两位”，并查看设置结果。
+
+```
+set customer yxh022
+get customer
+```
+
+-- 向名为 “friends” 的列表中依次添加元素 “姓名的拼音1”、“姓名的拼音2”、“姓名的拼音3”，然后获取列表的长度以及所有元素。
+
+```
+lpush friends y x h
+lrange friends 0 -1
+llen friends
+```
+
+-- 将值 “verified” 添加到名为 “account_status” 的集合中，再判断值 “verified” 是否存在于该所在集合中。
+
+```
+sadd account_status verified
+sismember account_status verified
+```
+
+-- 为名为 “customer” 的键设置过期时间为 90 秒，然后查看剩余过期时间。
+
+```
+expire customer 90
+ttl customer
+```
+
