@@ -257,7 +257,7 @@ create
 (:student{name:'王五',major:'数学',grade:85}),
 (:student{name:'赵六',major:'英语',grade:92}),
 (:student{major:'物理',grade:88}),
-(:student{name:'周八',major:'化学',grade:9})
+(:student{name:'周八',major:'化学',grade:90})
 ```
 
 ![image-20241226185006401](https://db.xinghai.ink/Typora/17352102089404824.png)
