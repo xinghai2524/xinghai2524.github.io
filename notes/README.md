@@ -10,11 +10,19 @@
 
 以下是一些实用的技术教程，供你进一步学习：
 
--  **[Docker 使用入门](/notes/docker.md)**
--  **[MongoDB 数据库操作](/notes/MongoDB.md)**
--  **[Vue.js 教程](/notes/vue.md)**
--  **[HDFS 安装与配置](/notes/hdfs搭建.md)**
--  **[hadoop高可用搭建](/notes/hadoop高可用搭建.md)**
+- **[Docker 使用入门](/notes/docker.md)**
+
+- **[MongoDB 数据库操作](/notes/MongoDB.md)**
+
+- **[Vue.js 教程](/notes/vue.md)**
+
+- **[Python数据可视化](/notes/DataVisualization)** `2025-01-13`
+
+- **[HDFS 安装与配置](/notes/hdfs搭建.md)**
+
+- **[hadoop高可用搭建](/notes/hadoop高可用搭建.md)**
+
+  
 
 
 ---

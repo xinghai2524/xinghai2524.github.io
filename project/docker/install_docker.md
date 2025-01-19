@@ -72,3 +72,22 @@ sudo usermod -aG docker <you_username>
 >
 > 成功
 
+## 关于国内无法拉取镜像的问题
+
+现在国内大部分镜像源已经关闭无法使用了，但还是保留了几个
+
+```
+docker.1ms.run
+```
+
+毫秒镜像，每个月免费10个G
+
+**使用方法**
+
+> 例如拉取mysql镜像
+>
+> ```
+> docker pull docker.1ms.run/mysql
+> ```
+>
+> 这样就可以了

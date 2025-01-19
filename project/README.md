@@ -17,11 +17,13 @@
 
 - **[使用 Vue.js 构建单页应用](./vuejs-single-page-app.md)**
 
+- **[REDME](https://raw.githubusercontent.com/xinghai-org/flask_ai/refs/heads/main/README.md)**
+
   
 
 ### 🛠️ 见问题与解决方案
 
--  **[CSS Grid 布局的实用技巧](./css-grid-tips.md)**
+-  **[关于Linux中matplotlib没有SimHei中文字体的问题](/project/Linux_SimHei)**
 -  **[现代前端开发工具链](./modern-frontend-toolchain.md)**
 
 
