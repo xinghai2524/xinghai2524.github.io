@@ -112,7 +112,7 @@ plt.show()
 
 **效果**
 
-![image-20250113143242442](.DataVisualization_file/17367499652908306.png)
+![image-20250113143242442](https://db.xinghai.ink/Typora/17374505608254879.png)
 
 在上面的方法中没有创建画布，那图表就会被绘制在默认的画布中，在使用plt.show方法之前所有的plot方法都会被绘制在同一个画布当中，例如
 
@@ -492,9 +492,693 @@ plt.show()
 |其他商品和服务|76.3%|
 |工艺品、收藏品|67.0%|
 
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+plt.rcParams['font.family'] = ['SimHei']
+plt.rcParams['axes.unicode_minus'] = False  # 处理负号显示问题
+labels = [" 家政、家教、保姆等生活服务", " 飞机票、火车票", " 家具", " 手机、手机配件",\
+          " 计算机及其配套产品", " 汽车用品", " 通信充值、游戏充值", " 个人护理用品",\
+          " 书报杂志及音像制品", " 餐饮、旅游、住宿", " 家用电器", " 食品、饮料、烟酒、保健品", \
+          " 家庭日杂用品", " 保险、演出票务", " 服装、鞋帽、家用纺织品", " 数码产品", \
+          " 其他商品和服务", " 工艺品、收藏品"]
+
+x = np.array([0.959, 0.951, 0.935, 0.924, 0.893, 0.892, 0.865, 0.863, 0.86 ,\
+       0.856, 0.854, 0.835, 0.826, 0.816, 0.798, 0.765, 0.763, 0.67 ])
+y = np.arange(18)
+
+
+plt.barh(y,x,height=0.6,tick_label=labels)
+plt.show()
 ```
 
+![image-20250119124613268](https://db.xinghai.ink/Typora/17372619755405967.png)
+
+## 2.4    绘制堆积面积图
+
+使用`pyplot`的`stackplot()`函数可以快速绘制堆积面积图，`stackplot()`函数的句法格式如下
+
+```python
+stackplot(x, y, labels=(), baseline='zero', data=None, *args, **kwargs)
 ```
+
+该函数常用的参数含义如下
+
+- x	表示x轴的数据，可以是一维数组
+- y	表示y轴的数据，可以是二维数组或一维数组序列
+- labels	表示每组折现及填充区域的标签
+- baseline	表示计算基线的方式，包括zero，sym wiggle
+
+<h3>示例</h3>
+
+使用`stackplot()`函数绘制由三条折现及下方填充区域堆叠的堆积面积图
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.arange(6)
+y1 = np.array([1, 4, 3, 5, 6, 7])
+y2 = np.array([1, 3, 4, 2, 7, 6])
+y3 = np.array([3, 4, 3, 6, 5, 5])
+
+# 下面两个都可以
+plt.stackplot(x,y1,y2,y3)
+# plt.stackplot(x,[y1,y2,y3])
+
+plt.show()
+```
+
+![image-20250119125916323](https://db.xinghai.ink/Typora/17372627580364785.png)
+
+<h3>实例 四</h3>
+
+**物流公司物流费用统计**
+
+|月份|A公司| B公司| C公司|
+|----|----|----|----|
+|1|198|203|185|
+|2|215|203|205|
+|3|245|236|226|
+|4|222|236|199|
+|5|200|269|238|
+|6|236|216|200|
+|7|201|298|250|
+|8|253|333|209|
+|9|236|301|246|
+|10|200|349|219|
+|11|266|360|253|
+|12|290|368|288|
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.arange(1,13)
+y_a = np.array([198, 215, 245, 222, 200, 236, 201, 253, 236, 200, 266, 290])
+y_b = np.array([203, 203, 236, 236, 269, 216, 298, 333, 301, 349, 360, 368])
+y_c = np.array([185, 205, 226, 199, 238, 200, 250, 209, 246, 219, 253, 288])
+
+plt.stackplot(x,y_a,y_b,y_c)
+plt.show()
+```
+
+![image-20250119133044456](https://db.xinghai.ink/Typora/1737264647415256.png)
+
+## 2.5    绘制直方图
+
+使用`pyplot`的`hist()`函数可以绘制直方图，`hist()`函数的语法格式如下
+
+```python
+def hist(
+    x: ArrayLike | Sequence[ArrayLike],
+    bins: int | Sequence[float] | str | None = None,
+    range: tuple[float, float] | None = None,
+    density: bool = False,
+    weights: ArrayLike | None = None,
+    cumulative: bool | float = False,
+    bottom: ArrayLike | float | None = None,
+    histtype: Literal["bar", "barstacked", "step", "stepfilled"] = "bar",
+    align: Literal["left", "mid", "right"] = "mid",
+    orientation: Literal["vertical", "horizontal"] = "vertical",
+    rwidth: float | None = None,
+    log: bool = False,
+    color: ColorType | Sequence[ColorType] | None = None,
+    label: str | Sequence[str] | None = None,
+    stacked: bool = False,
+    *,
+    data=None,
+    **kwargs,
+)
+```
+
+该函数常用的参数含义如下
+
+- x	表示x轴的数据
+- bins	表示矩形条的个数，默认为10
+- range	表示数据的范围
+- cumulative	表示是否计算累计频数或频率
+- histtype	表示直方图的类型，
+- align	表示矩形条边界的对其方式
+
+<h3>示例</h3>
+
+绘制一个具有8个矩形条填充的线条直方图
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+scores = np.random.randint(0,100,50)
+
+plt.hist(scores,bins=8,histtype='stepfilled')
+plt.show()
+```
+
+![image-20250119145431755](https://db.xinghai.ink/Typora/17372696738160198.png)
+
+<h3>实例 五</h3>
+
+人脸识别的灰度直方图
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+random_state = np.random.RandomState(19680801)
+random_x = random_state.randn(1000)
+
+plt.hist(random_x,bins=25)
+plt.show()
+```
+
+![image-20250119145922404](https://db.xinghai.ink/Typora/17372699647649877.png)
+
+## 2.6    绘制 饼图或圆环图
+
+使用`pie()`函数绘制饼图或者圆环图，该函数语法如下
+
+```python
+pie(
+    x: ArrayLike,
+    explode: ArrayLike | None = None,
+    labels: Sequence[str] | None = None,
+    colors: ColorType | Sequence[ColorType] | None = None,
+    autopct: str | Callable[[float], str] | None = None,
+    pctdistance: float = 0.6,
+    shadow: bool = False,
+    labeldistance: float | None = 1.1,
+    startangle: float = 0,
+    radius: float = 1,
+    counterclock: bool = True,
+    wedgeprops: dict[str, Any] | None = None,
+    textprops: dict[str, Any] | None = None,
+    center: tuple[float, float] = (0, 0),
+    frame: bool = False,
+    rotatelabels: bool = False,
+    *,
+    normalize: bool = True,
+    hatch: str | Sequence[str] | None = None,
+    data=None,
+)
+```
+
+<h3>示例</h3>
+
+**使用`pie()`函数绘制简单的饼图**
+
+> - x	表示数据
+> - labels	表示数据对应的标签和文本
+> - autopct	表示控制图形显示的数值字符串，可以通过格式指定显示小数点后几位
+> - radius	表示半径，半径越大，图像越大
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+data = np.array([20,50,10,15,30,55])
+label = np.array(['A','B','C','D','E','F'])
+
+plt.pie(data,labels=label,autopct='%.2f%%',radius=1.5)
+plt.show()
+```
+
+![image-20250119152832217](https://db.xinghai.ink/Typora/17372717141331823.png)
+
+**使用`pie()`函数绘制圆环图**
+
+> - pctdistance		用来控制数值距离圆心的距离默认是0.6
+> - wedgeprops	用来设置属性，例如width可以控制楔形的宽度
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+data = np.array([20,50,10,15,30,55])
+label = np.array(['A','B','C','D','E','F'])
+
+plt.pie(data,labels=label,autopct='%.2f%%',radius=1.5,pctdistance=0.8,wedgeprops={'width':0.65})
+plt.show()
+```
+
+![image-20250119154612415](https://db.xinghai.ink/Typora/1737272774477938.png)
+
+
+
+**`shoadow`表示是否绘制阴影，`frame`表示是否绘制图框**
+
+![image-20250119160939872](https://db.xinghai.ink/Typora/1737274181774736.png)
+
+<h3>实例 六</h3>
+
+支付宝月账单报告
+
+|分类|金额（元）|
+|--|--|
+|购物|800|
+|人情往来|100|
+|餐饮美食|1000|
+|通信物流|200|
+|生活日用|300|
+|交通出行|200|
+|休闲娱乐|200|
+|其他|200|
+|总支出|3000|
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+plt.rcParams['font.sans-serif'] = ['SimHei']
+
+data = np.array([800 ,100 ,1000,200 ,300 ,200 ,200 ,200 ])
+data = data / 3000
+labels = np.array(["购物", "人情往来", "餐饮美食", "通信物流", "生活日用", "交通出行", "休闲娱乐", "其他"])
+
+plt.pie(data,autopct='%.2f%%',shadow=True,explode=[0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1],startangle=90,labels=labels)
+plt.show()
+```
+
+![image-20250119162303670](https://db.xinghai.ink/Typora/17372765961017027.png)
+
+## 2.7    绘制散点图或气泡图
+
+使用`scatter()`函数可以绘制散点图或气泡图,基本语法如下
+
+```python
+scatter(
+    x: float | ArrayLike,
+    y: float | ArrayLike,
+    s: float | ArrayLike | None = None,
+    c: ArrayLike | Sequence[ColorType] | ColorType | None = None,
+    marker: MarkerType | None = None,
+    cmap: str | Colormap | None = None,
+    norm: str | Normalize | None = None,
+    vmin: float | None = None,
+    vmax: float | None = None,
+    alpha: float | None = None,
+    linewidths: float | Sequence[float] | None = None,
+    *,
+    edgecolors: Literal["face", "none"] | ColorType | Sequence[ColorType] | None = None,
+    plotnonfinite: bool = False,
+    data=None,
+    **kwargs,
+)
+```
+
+- x,y	表示数据点的位置
+- s	表示数据点的大小
+- c	表示数据点的颜色
+- marker	表示数据点的形状，默认为圆形
+- cmap	表示数据点颜色的映射表，仅当c为浮点数时生效
+- norm	表示数据亮度，取值为0~1
+- alpha	表示透明度
+
+<h3>示例</h3>
+
+**使用`scatter()`绘制一个散点图**
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+num = 50
+x = np.random.rand(num)
+y = np.random.rand(num)
+
+plt.scatter(x,y)
+plt.show()
+```
+
+![image-20250119170518797](https://db.xinghai.ink/Typora/17372775210338879.png)
+
+**通过设置`s`参数控制点大小绘制气泡图**
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+num = 50
+x = np.random.rand(num)
+y = np.random.rand(num)
+
+plt.scatter(x,y,s=(np.random.rand(num) * 30)**2,alpha=0.5)
+plt.show()
+```
+
+![](https://db.xinghai.ink/Typora/1737277601072146.png)
+
+
+
+<h3>实例 七</h3>
+
+车速与制动距离的关系
+
+|车速（km/h）|制动距离（m）|车速（km/h）|制动距离（m）|
+|----|----|----|----|
+|10|0.5|110|59.5|
+|20|2.0|120|70.8|
+|30|4.4|130|83.1|
+|40|7.9|140|96.4|
+|50|12.3|150|110.7|
+|60|17.7|160|126.0|
+|70|24.1|170|142.2|
+|80|31.5|180|159.4|
+|90|39.9|190|177.6|
+|100|49.2|200|196.8|
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.arange(10,210,10)
+y = np.array([0.5  , 2.0  , 4.4  , 7.9  , 12.3 , 17.7 , 24.1 , 31.5 , 39.9 , 49.2 , 59.5 , 70.8 , 83.1 , 96.4 , 110.7, 126.0, 142.2, 159.4, 177.6, 196.8])
+
+plt.scatter(x,y,s=50,alpha=0.5)
+plt.show()
+```
+
+![image-20250119172430981](https://db.xinghai.ink/Typora/1737278672871719.png)
+
+## 2.8    绘制箱型图
+
+使用`boxplot()`绘制箱型图，构造函数如下
+
+```python
+boxplot(
+    x: ArrayLike | Sequence[ArrayLike],
+    notch: bool | None = None,
+    sym: str | None = None,
+    vert: bool | None = None,
+    whis: float | tuple[float, float] | None = None,
+    positions: ArrayLike | None = None,
+    widths: float | ArrayLike | None = None,
+    patch_artist: bool | None = None,
+    bootstrap: int | None = None,
+    usermedians: ArrayLike | None = None,
+    conf_intervals: ArrayLike | None = None,
+    meanline: bool | None = None,
+    showmeans: bool | None = None,
+    showcaps: bool | None = None,
+    showbox: bool | None = None,
+    showfliers: bool | None = None,
+    boxprops: dict[str, Any] | None = None,
+    tick_labels: Sequence[str] | None = None,
+    flierprops: dict[str, Any] | None = None,
+    medianprops: dict[str, Any] | None = None,
+    meanprops: dict[str, Any] | None = None,
+    capprops: dict[str, Any] | None = None,
+    whiskerprops: dict[str, Any] | None = None,
+    manage_ticks: bool = True,
+    autorange: bool = False,
+    zorder: float | None = None,
+    capwidths: float | ArrayLike | None = None,
+    label: Sequence[str] | None = None,
+    *,
+    data=None,
+)
+```
+
+
+
+**使用`boxplot()`函数绘制一个箱型图**
+
+> - x	绘制箱型图的数据
+> - menline	是否用横跨箱体的先条标出中位数
+> - patch_artist	是否填充箱体的颜色
+> - showfliers	是否显示异常值
+> - widths	表示箱体的宽度
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+data = np.random.randn(100)
+plt.boxplot(data,meanline=True,widths=0.3,patch_artist=True,showfliers=False)
+plt.show()
+```
+
+![image-20250120230127690](https://db.xinghai.ink/Typora/17373852911877167.png)
+
+<h3>实例 八</h3>
+
+2017年和2018年全国发电量统计
+
+| 月份 | 2018年发电量（亿千瓦·时） | 月份 | 发电量（亿千瓦·时） |
+| ---- | ------------------------- | ---- | ------------------- |
+| 1月  | 5200                      | 1月  | 4605.2              |
+| 2月  | 5254.5                    | 2月  | 4710.3              |
+| 3月  | 5283.4                    | 3月  | 4767.2              |
+| 4月  | 5107.8                    | 4月  | 4947                |
+| 5月  | 5443.3                    | 5月  | 5203                |
+| 6月  | 5550.6                    | 6月  | 6047.4              |
+| 7月  | 6400.2                    | 7月  | 6047.4              |
+| 8月  | 6404.9                    | 8月  | 5945.5              |
+| 9月  | 5483.1                    | 9月  | 5219.6              |
+| 10月 | 5330.2                    | 10月 | 5038.1              |
+| 11月 | 5543                      | 11月 | 5196.3              |
+| 12月 | 6199.9                    | 12月 | 5698.6              |
+
+> vert	表示是否将箱型图垂直摆放，默认为True
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+plt.rcParams['font.family'] = ['SimHei']
+data_18 = np.array([5200  ,5254.5,5283.4,5107.8,5443.3,5550.6,6400.2,6404.9,5483.1,5330.2,5543  ,6199.9])
+data_17 = np.array([4605.2,4710.3,4767.2,4947  ,5203  ,6047.4,6047.4,5945.5,5219.6,5038.1,5196.3,5698.6])
+
+# 绘制箱型图
+plt.boxplot([data_18,data_17],tick_labels=('2018年','2017年'),meanline=True,widths=0.5,vert=False,patch_artist=True)
+plt.show()
+```
+
+![image-20250120234859367](https://db.xinghai.ink/Typora/1737388141344926.png)
+
+## 2.9    绘制雷达图
+
+使用`pyplot`的`polar()`函数可以快速绘制雷达图
+
+```python
+polar(theta, r, **kwargs)
+```
+
+> theta	表示每个数据点所在的射线与极径的夹角
+>
+> r	表示每个数据点到原点的距离
+
+
+
+| 用户 | 研究型（I） | 艺术型（A） | 社会型（S） | 企业型（E） | 传统型（C） | 现实型（R） |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| 用户1 | 0.40 | 0.32 | 0.35 | 0.30 | 0.30 | 0.88 |
+| 用户2 | 0.85 | 0.35 | 0.30 | 0.40 | 0.40 | 0.30 |
+| 用户3 | 0.43 | 0.89 | 0.30 | 0.28 | 0.22 | 0.30 |
+| 用户4 | 0.30 | 0.25 | 0.48 | 0.85 | 0.45 | 0.40 |
+| 用户5 | 0.20 | 0.38 | 0.87 | 0.45 | 0.32 | 0.28 |
+| 用户6 | 0.34 | 0.31 | 0.38 | 0.40 | 0.92 | 0.28 |
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+plt.rcParams['font.family'] = ['SimHei']
+data = np.array([[0.40, 0.32, 0.35, 0.30, 0.30, 0.88],
+[0.85, 0.35, 0.30, 0.40, 0.40, 0.30],
+[0.43, 0.89, 0.30, 0.28, 0.22, 0.30],
+[0.30, 0.25, 0.48, 0.85, 0.45, 0.40],
+[0.20, 0.38, 0.87, 0.45, 0.32, 0.28],
+[0.34, 0.31, 0.38, 0.40, 0.92, 0.28]])
+
+# 计算出圆的平分6份的各个角度
+angles = np.linspace(0,2 * np.pi, 6, endpoint=False)
+# 在末尾添加一位和首位相同的数
+angles = np.concatenate((angles,[angles[0]])) 
+data = np.concatenate((data,[data[0]]))
+
+rradar_labels = ['研究型','艺术型','社会型','企业型','传统型','现实型','研究型']
+
+plt.polar(angles,data)
+plt.fill(angles,data,alpha=0.25)
+plt.thetagrids(angles * 180/np.pi,labels=rradar_labels)
+plt.show()
+```
+
+![image-20250121130203582](https://db.xinghai.ink/Typora/17374357269873056.png)
+
+
+
+## 2.10    绘制误差棒
+
+**使用`errorbar()`绘制误差棒**
+
+```python
+errorbar(
+    x: float | ArrayLike,
+    y: float | ArrayLike,
+    yerr: float | ArrayLike | None = None,
+    xerr: float | ArrayLike | None = None,
+    fmt: str = "",
+    ecolor: ColorType | None = None,
+    elinewidth: float | None = None,
+    capsize: float | None = None,
+    barsabove: bool = False,
+    lolims: bool | ArrayLike = False,
+    uplims: bool | ArrayLike = False,
+    xlolims: bool | ArrayLike = False,
+    xuplims: bool | ArrayLike = False,
+    errorevery: int | tuple[int, int] = 1,
+    capthick: float | None = None,
+    *,
+    data=None,
+    **kwargs,
+)
+```
+
+该函数常用的参数含义如下
+
+- x，y	表示数据点位置
+- xerr，yerr	表示数据点的误差
+- fmt	表示数据点的标记样式
+- ecolor	表示误差棒的颜色
+- elinewidth	表示误差棒的宽度]
+- capsize	误差帮横跨栏的长度
+- capthick	误差棒横跨栏的厚度
+
+<h3>示例</h3>
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.arange(5)
+y = (25, 32, .4, 20, 25)
+y_offset = (3, 5, 2, 3, 3)
+
+plt.errorbar(x,y,yerr=y_offset,capsize=3,capthick=2)
+plt.show()
+```
+
+![image-20250121131931482](https://db.xinghai.ink/Typora/17374367733609188.png)
+
+<h3>实例 十</h3>
+
+4个树种不同季节的细根生物量
+
+|季节|马尾松|樟树|杉木|桂花|
+|--|--|--|--|--|
+|春季|2.04±0.16|1.69±0.27|4.65±0.34|3.39±0.23|
+|夏季|1.57±0.08|1.61±0.14|4.99±0.32|2.33±0.23|
+|秋季|1.63±0.10|1.64±0.14|4.94±0.29|4.10±0.39|
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.arange(3)
+
+y1 = np.array([2.04,1.57,1.63])
+y2 = np.array([1.69,1.61,1.64])
+y3 = np.array([4.65,4.99,4.94])
+y4 = np.array([3.39,2.33,4.10])
+
+plt.rcParams['font.family'] = ['SimHei']
+
+error1 = [0.16,0.08,0.10]
+error2 = [0.27,0.14,0.14]
+error3 = [0.34,0.32,0.29]
+error4 = [0.23,0.23,0.39]
+
+plt.bar(x,y1,width=0.2)
+plt.bar(x + 0.2,y2,width=0.2,tick_label=['春季','夏季','秋季'])
+plt.bar(x + 0.4,y3,width=0.2)
+plt.bar(x + 0.6,y4,width=0.2)
+
+plt.errorbar(x,y1,yerr=error1,capsize=3,elinewidth=2,fmt='k,')
+plt.errorbar(x + 0.2,y2,yerr=error2,capsize=3,elinewidth=2,fmt='k,')
+plt.errorbar(x + 0.4,y3,yerr=error3,capsize=3,elinewidth=2,fmt='k,')
+plt.errorbar(x + 0.6,y4,yerr=error4,capsize=3,elinewidth=2,fmt='k,')
+
+plt.show()
+```
+
+![image-20250121170817063](https://db.xinghai.ink/Typora/17374505003753402.png)
+
+## 2.11   习题
+
+高二男生、女生各科的平均成绩
+
+| 学科 | 平均成绩（男） | 平均成绩（女） |
+| ---- | -------------- | -------------- |
+| 语文 | 85.5           | 94             |
+| 数学 | 91             | 82             |
+| 英语 | 72             | 89.5           |
+| 物理 | 59             | 62             |
+| 化学 | 66             | 49             |
+| 生物 | 55             | 53             |
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+plt.rcParams['font.family'] = ['SimHei']
+
+x = np.arange(6)
+y1 = np.array([85.5,91,72,59,66,55])
+y2 = np.array([94,82,89.5,62,49,53])
+
+label = ['语文','数学','英语','物理','化学','生物']
+
+plt.bar(x,y1,width=0.3,tick_label=label)
+plt.bar(x+0.3,y2,width=0.3)
+plt.show()
+```
+
+![image-20250121173654354](https://db.xinghai.ink/Typora/1737452216222738.png)
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+plt.rcParams['font.family'] = ['SimHei']
+
+x = np.arange(6)
+y1 = np.array([85.5,91,72,59,66,55])
+y2 = np.array([94,82,89.5,62,49,53])
+
+label = ['语文','数学','英语','物理','化学','生物']
+
+plt.bar(x,y1,width=0.3,tick_label=label)
+plt.bar(x,y2,bottom=y1,width=0.3)
+plt.show()
+```
+
+![image-20250121173738065](https://db.xinghai.ink/Typora/17374522620839047.png)
+
+|子类目|销售额（亿元）|
+|--|--|
+|童装|29665|
+|奶粉辅食|3135.4|
+|孕妈专区|4292.4|
+|洗护喂养|5240.9|
+|宝宝尿裤|5543.4|
+|春夏新品|5633.8|
+|童车童床|6414.5|
+|玩具文娱|9308.1|
+|童鞋|10353|
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+y = np.array([29665 , 3135.4, 4292.4, 5240.9, 5543.4, 5633.8, 6414.5, 9308.1, 10353])
+plt.pie(y,radius=1.3,autopct='%.2f%%',pctdistance=0.8,explode=[0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1])
+plt.show()
+```
+
+![image-20250121174551124](https://db.xinghai.ink/Typora/17374527529996457.png)
 
 <div style="color:#e96900;float:right;"><sub style="background-color:#f8f8f8;font-weight:600;">2025年01月18日</sub></div>
 
