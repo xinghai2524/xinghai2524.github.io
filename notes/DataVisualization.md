@@ -1180,5 +1180,702 @@ plt.show()
 
 ![image-20250121174551124](https://db.xinghai.ink/Typora/17374527529996457.png)
 
+# 第三章
+
+## 3.1    认识图表常用的辅助元素
+
+图表的`辅助元素`是指`除根据数据绘制的图形之外的元素`,常用的辅助元素包括`坐标轴`、`标题`、`图例`、`网格`、`参考线`、`参考区域`、`注释文本`和`表格`
+
+![image-20250122193427563](https://db.xinghai.ink/Typora/17375456770663512.png)
+
+## 3.2    设置坐标轴的标签、刻度线和刻度标签
+
+`matplotlib`提供了设置x轴和y轴标签的方式
+
+**在`matplotlib`中，使用`pyplot`模块的`xlabel()`函数设置x轴的标签**
+
+`xlabel()`构造函数如下
+
+```python
+def xlabel(
+    xlabel: str,
+    fontdict: dict[str, Any] | None = None,
+    labelpad: float | None = None,
+    *,
+    loc: Literal["left", "center", "right"] | None = None,
+    **kwargs,
+)
+```
+
+- xlabel	表示x轴的标签文本 
+- fontdict	表示控制标签文本的样式的字典
+- labelpad	表示标签与坐标轴边框的距离
+
+<h3>示例</h3>
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+plt.rcParams['font.family'] = ['SimHei']
+
+x = np.arange(1,6)
+y = np.random.randint(1,10,5)
+
+plt.plot(x,y)
+plt.xlabel("x轴",labelpad=6)
+plt.show()
+```
+
+![image-20250123134111038](.DataVisualization_file/image-20250123134111038.png)
+
+**使用`pyplot`的`ylabel()`函数设置y轴的标签**
+
+构造函数如下
+
+```python
+def ylabel(
+    ylabel: str,
+    fontdict: dict[str, Any] | None = None,
+    labelpad: float | None = None,
+    *,
+    loc: Literal["bottom", "center", "top"] | None = None,
+    **kwargs,
+
+```
+
+<h3>示例</h3>
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+plt.rcParams['font.family'] = ['SimHei']
+
+x = np.arange(1,6)
+y = np.random.randint(1,10,5)
+
+plt.plot(x,y)
+plt.ylabel("y轴",labelpad=6)
+plt.show()
+```
+
+![image-20250123134326988](https://db.xinghai.ink/Typora/1737611009629191.png)
+
+**使用`pyplot`模块的`xlim()`和`ylim()`函数分别可以设置x轴和y轴的刻度范围**
+
+通常来说，刻度范围是根据图表大小自动设置的，但是可以使用`xlim`手动设置刻度范围,构造函数如下
+
+```python
+xlim(left=None, right=None, *, emit=True, auto=False,
+                 xmin=None, xmax=None)
+```
+
+- left	表示x轴刻度取值区间的左位数
+- right	表示x轴刻度取值区间的右位数
+
+<h3>示例</h3>
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+plt.rcParams['font.family'] = ['sans-serif']
+x = np.linspace(-1 *np.pi,np.pi)
+ysin = np.sin(x)
+ycos = np.cos(x)
+
+plt.plot(x,ysin)
+plt.show()
+
+plt.plot(x,ysin)
+plt.xlim(x.min() * 2,x.max() * 2)
+plt.show()
+```
+
+![image-20250123200629201](https://db.xinghai.ink/Typora/17376339924326658.png)
+
+![image-20250123200635568](https://db.xinghai.ink/Typora/17376339972583244.png)
+
+**使用`pyplot`模块的`xticks()`和`yticks()`函数设置刻度标签**
+
+构造函数如下
+
+`xlime`是设置刻度的范围，那么`zticks`就是设置具体的x刻度值
+
+```python
+def xticks(
+    ticks: ArrayLike | None = None,
+    labels: Sequence[str] | None = None,
+    *,
+    minor: bool = False,
+    **kwargs
+)
+```
+
+<h3>示例</h3>
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+data = np.arange(5)
+
+plt.plot(data)
+
+plt.xticks([0,1,2,3,4,4.3,4.7,5])
+plt.show()
+```
+
+![image-20250127123551392](https://db.xinghai.ink/Typora/17379525549071593.png)
+
+**设置刻度范围和刻度标签**
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(-np.pi,np.pi)
+ysin = np.sin(x)
+ycos = np.cos(x)
+
+plt.plot(x,ysin)
+plt.plot(x,ycos)
+
+plt.xlim(x.min() * 1.5 ,x.max() * 1.5)
+plt.xticks([-np.pi,-np.pi/2,0,np.pi / 2,np.pi],[r'$-\pi$',r'$-\pi/2$','$0$',r'$\pi/2$','$\pi$'])
+
+plt.show()
+```
+
+![image-20250127133537828](https://db.xinghai.ink/Typora/17379561394687648.png)
+
+<h3>实例 一</h3>
+
+2019中国电影票房排行榜 Top15
+
+|电影名称|总票房（亿元）|电影名称|总票房（亿元）|
+| ---- | ---- | ---- | ---- |
+|哪吒之魔童降世|48.57|飞驰人生|17.03|
+|流浪地球|46.18|烈火英雄|16.70|
+|复仇者联盟4：终局之战|42.05|蜘蛛侠：英雄远征|14.01|
+|疯狂的外星人|21.83|速度与激情：特别行动|13.84|
+|扫毒2：天地对决|12.85|哥斯拉2：怪兽之王|9.27|
+|大黄蜂|11.38|阿丽塔：战斗天使|8.88|
+|惊奇队长|10.25|银河补习班|8.64|
+|比悲伤更悲伤的故事|9.46| | |
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+plt.rcParams['font.family'] = 'SimHei'
+data = np.array([48.57, 46.18, 42.05, 21.83, 17.03, 16.70, 14.01, 13.84, 12.85, 11.38, 10.25, 9.46, 9.27, 8.88, 8.64])
+labels = np.array(["哪吒之魔童降世", "流浪地球", "复仇者联盟4：终局之战", "疯狂的外星人", "飞驰人生",
+                   "烈火英雄", "蜘蛛侠：英雄远征", "速度与激情：特别行动", "扫毒2：天地对决", "大黄蜂",
+                   "惊奇队长", "比悲伤更悲伤的故事", "哥斯拉2：怪兽之王", "阿丽塔：战斗天使", "银河补习班"])
+
+y_data = np.arange(len(data))
+
+plt.barh(y_data,data,height=0.2,color='orange')
+plt.yticks(y_data,labels)
+plt.xlabel('总票房（亿元）')
+plt.ylabel('电影名称')
+plt.show()
+```
+
+![image-20250127141610248](https://db.xinghai.ink/Typora/17379585723511775.png)
+
+## 3.3    添加图例和标签
+
+使用`pyplot`模块的`title`可以给图表添加标签
+
+```python
+title(label,fontdict=None,loc='center',pad=None,**kwargs)
+```
+
+<h3>示例</h3>
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+plt.rcParams['font.family'] = 'SimHei'
+plt.plot(np.arange(5))
+plt.title('标签')
+plt.show()
+```
+
+![image-20250127200903918](https://db.xinghai.ink/Typora/17379797467878153.png)
+
+**使用`pyplot`模块的`legend()`函数可以给图表添加图例**
+
+```
+legend(handles,labels,loc,bbox_to_anchor,ncol,title,shadow,fancybox,*args,**kwargs)
+```
+
+<h3>示例</h3>
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+plt.rcParams['font.family'] = 'SimHei'
+plt.plot(np.arange(5))
+plt.plot([1,5,2,4,6])
+plt.title('标签')
+plt.legend(['线条一','线条二'],loc='upper center')
+plt.show()
+```
+
+![image-20250127213915515](https://db.xinghai.ink/Typora/1737985157485802.png)
+
+<h3>实例 二</h3>
+
+支付宝月账单报告
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+plt.rcParams['font.sans-serif'] = ['SimHei']
+
+data = np.array([800 ,100 ,1000,200 ,300 ,200 ,200 ,200 ])
+data = data / 3000
+labels = np.array(["购物", "人情往来", "餐饮美食", "通信物流", "生活日用", "交通出行", "休闲娱乐", "其他"])
+
+plt.pie(data,autopct='%.2f%%',shadow=True,explode=[0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1],startangle=90,labels=labels)
+plt.legend(labels,loc='upper right',bbox_to_anchor=[1.5,1.1])
+plt.show()
+```
+
+![image-20250127214417102](https://db.xinghai.ink/Typora/17379854587376997.png)
+
+## 3.4    显示网格
+
+**使用`pyplot`模块的`grid()`函数显示网格**
+
+```python
+grid(b=None,which='major', axis='both,**kwargs')
+```
+
+- b	表示是否显示网格
+- which	表示显示网格的类型，支持`major`、`minor`、`both`
+- axis	表示显示哪个方向的网格支持`both`、`x`、`y`
+- lw	表示网格的宽度
+
+<h3>示例</h3>
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(-np.pi,np.pi)
+plt.plot(x,np.sin(x))
+plt.plot(x,np.cos(x))
+
+plt.grid(axis='y',linewidth=0.3)
+
+plt.show()
+```
+
+![image-20250128131642235](https://db.xinghai.ink/Typora/17380414052812538.png)
+
+<h3>实例 三</h3>
+
+汽车速度与制动距离的关系
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+plt.rcParams['font.family'] = 'SimHei'
+x_speed = np.arange(10,210,10)
+y_distance = np.array([
+    0.5, 2.0, 4.4, 7.9, 12.3,
+    17.7, 24.1, 31.5, 39.9, 49.2,
+    59.5, 70.8, 83.1, 96.4, 110.7,
+    126.0, 142.2, 159.4, 177.6, 196.8
+])
+plt.scatter(x_speed,y_distance,s=50,alpha=0.5, linewidths=0.3)
+plt.xlabel('速度(km/h)')
+plt.ylabel('制动距离(m)')
+plt.grid(linewidth=0.3)
+```
+
+![image-20250128132831337](https://db.xinghai.ink/Typora/17380421130657723.png)
+
+## 3.5    添加参考线和参考区域
+
+使用axhline()函数添加水平参考线
+
+```python
+axhline(y=0,xmin=0,xmax=1linestyle='-',**kwargs)
+```
+
+该函数常用的参数含义如下
+
+- y	表示水平参考线的纵坐标
+- xmin	表示参考线的起始位置
+- ymax	表示水平参考线的结束位置
+- linestyle	表示水平参考线的类型
+
+<h3>示例</h3>
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(-np.pi,np.pi)
+plt.plot(x,np.sin(x))
+plt.plot(x,np.cos(x))
+
+plt.grid(axis='y',linewidth=0.3)
+plt.axvline(x=0,ymax=0.9,ymin=0.1,linestyle='--')
+plt.axhline(y=0,linestyle='--')
+plt.show()
+```
+
+![image-20250128150650657](https://db.xinghai.ink/Typora/17380480131767545.png)
+
+**使用`pyplot`模块的`axhspan()`函数添加参考区域**
+
+```python
+axhspan(ymin,ymax,xmin=0,xmax=1,**kwargs)
+```
+
+<h3>示例</h3>
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+plt.rcParams['font.family'] = ['SimHei']
+plt.rcParams['axes.unicode_minus'] = False
+
+x = np.linspace(-np.pi,np.pi)
+plt.plot(x,np.sin(x))
+plt.plot(x,np.cos(x))
+
+plt.grid(axis='y',linewidth=0.3)
+plt.legend(['正弦','余弦'])
+plt.axvline(x=0,ymax=0.9,ymin=0.1,linestyle='--')
+plt.axhline(y=0,linestyle='--')
+
+
+plt.axvspan(xmin=0.5,xmax=2.0,alpha=0.3)
+plt.axhspan(ymin=0.5,ymax=1.0,alpha=0.3)
+
+plt.show()
+```
+
+![image-20250128153300790](https://db.xinghai.ink/Typora/1738049582865855.png)
+
+<h3>实例 四</h3>
+
+全校高二年级各班男女英语成绩评估
+
+|班级名称|平均成绩（男生）|平均成绩（女生）|
+| ---- | ---- | ---- |
+|高二1班|90.5|92.7|
+|高二2班|89.5|87.0|
+|高二3班|88.7|90.5|
+|高二4班|88.5|85.0|
+|高二5班|85.2|89.5|
+|高二6班|86.6|89.8|
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+plt.rcParams['font.family'] = ['SimHei']
+plt.rcParams['axes.unicode_minus'] = False
+
+men_means = np.array([90.5, 89.5, 88.7, 88.5, 85.2, 86.6])
+women_means = np.array([92.7, 87.0, 90.5, 85.0, 89.5, 89.8])
+
+ind = np.arange(len(men_means))
+width=0.2
+plt.bar(ind-0.1,men_means,width=width,label='男生平均成绩')
+plt.bar(ind+0.2,women_means,width=width,label='女生平均成绩')
+plt.title('高二各班男生、女生英语平均成绩')
+
+plt.xticks(ind,["高二1班", "高二2班", "高二3班", "高二4班", "高二5班", "高二6班"])
+plt.ylabel('分数')
+
+# 参考线
+plt.axhline(88.5,linestyle='--',linewidth=1.0,label='全体平均成绩')
+
+
+plt.legend(loc='lower right')
+plt.show()
+```
+
+![image-20250128163212354](https://db.xinghai.ink/Typora/17380531350876904.png)
+
+## 3.6    添加注释文本
+
+**使用pyplot模块的`annotate()`函数为图表添加指向型注释文本**
+
+```python
+annotate(s, xy, *args, **kwargs)
+```
+
+- s	表示注释文本的内容
+- xy	表示注释点所在的坐标，接收元组
+- xytext	表示注释文本所在的坐标位置
+- arrowprops	表示箭头的属性字典
+
+<h3>示例</h3>
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+plt.rcParams['font.family'] = ['SimHei']
+plt.rcParams['axes.unicode_minus'] = False
+
+x = np.linspace(-np.pi,np.pi)
+plt.plot(x,np.sin(x))
+plt.plot(x,np.cos(x))
+
+plt.grid(axis='y',linewidth=0.3)
+plt.legend(['正弦','余弦'])
+plt.axvline(x=0,ymax=0.9,ymin=0.1,linestyle='--')
+plt.axhline(y=0,linestyle='--')
+
+
+plt.axvspan(xmin=0.5,xmax=2.0,alpha=0.3)
+plt.axhspan(ymin=0.5,ymax=1.0,alpha=0.3)
+
+plt.annotate('最小值',xy=(-np.pi/2,-1.0), xytext=(-np.pi/2,-0.5),arrowprops={"arrowstyle":'->'})
+plt.show()
+```
+
+![image-20250128165918791](https://db.xinghai.ink/Typora/17380547616572776.png)
+
+**使用`pyplot`模块的`text()`添加无指向文本标记**
+
+```python
+text(x,y,s,fontdict=None,withdash=<deprecated parameter>,**kwargs)
+```
+
+- xy	表示注释文本的位置
+- s	表示文本的内容
+- fontdict	表示控制字体的字典
+
+<h3>示例</h3>
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+plt.rcParams['font.family'] = ['SimHei']
+plt.rcParams['axes.unicode_minus'] = False
+
+x = np.linspace(-np.pi,np.pi)
+plt.plot(x,np.sin(x))
+plt.plot(x,np.cos(x))
+
+
+plt.xlim(x.min() * 1.5, x.max() * 1.5)
+plt.xticks([-np.pi,-np.pi / 2,0,np.pi /2, np.pi],[r'$-\pi$',r'$-\pi/2$','0',r'$\pi/2$',r'$\pi$'])
+
+
+
+plt.grid(axis='y',linewidth=0.3)
+plt.legend(['正弦','余弦'])
+plt.axvline(x=0,ymax=0.9,ymin=0.1,linestyle='--')
+plt.axhline(y=0,linestyle='--')
+
+
+plt.axvspan(xmin=0.5,xmax=2.0,alpha=0.3)
+plt.axhspan(ymin=0.5,ymax=1.0,alpha=0.3)
+
+plt.annotate('最小值',xy=(-np.pi/2,-1.0), xytext=(-np.pi/2,-0.5),arrowprops={"arrowstyle":'->'})
+plt.text(3.10,0.10,'y=sin(x)',bbox={'alpha':0.2})
+plt.show()
+```
+
+![image-20250129165442197](https://db.xinghai.ink/Typora/17381408855587418.png)
+
+<h3>实例</h3>
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.arange(7)
+y = np.array([10770, 16780, 24440, 30920, 37670, 48200, 57270])
+
+rects = plt.bar(x,y,width=0.5,tick_label=["FY 2013 ", "FY 2014 ", "FY 2015 ",\
+                                   "FY 2016 ", "FY 2017 ", "FY 2018 ", "FY 2019 "])
+
+for i in rects:
+    plt.text(i.get_x() + 0.25,i.get_height() + 400,s=i.get_height(),ha='center',va='bottom')
+plt.show()
+```
+
+![image-20250129170448990](https://db.xinghai.ink/Typora/1738141490964128.png)
+
+## 3.7    添加表格
+
+matplotlib可以添加各种各样的表格
+
+**使用`pyplot`模块的`table()`函数添加自定义表格**
+
+```python
+table(
+    cellText=None,
+    cellColours=None,
+    cellLoc="right",
+    colWidths=None,
+    rowLabels=None,
+    rowColours=None,
+    rowLoc="left",
+    colLabels=None,
+    colColours=None,
+    colLoc="center",
+    loc="bottom",
+    bbox=None,
+    edges="closed",
+    **kwargs,
+)
+```
+
+- cellText	表示单元格中的数据，是一个二维列表
+- cellColours	表示行标题所在单元格的背景颜色
+- cellLoc	表示单元格的对其方式
+- rowLabels	行标题文本
+- colLabels	列标题文本
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+plt.rcParams['font.family'] = ['SimHei']
+plt.rcParams['axes.unicode_minus'] = False
+
+x = np.linspace(-np.pi,np.pi)
+plt.plot(x,np.sin(x))
+plt.plot(x,np.cos(x))
+
+
+plt.xlim(x.min() * 1.5, x.max() * 1.5)
+plt.xticks([-np.pi,-np.pi / 2,0,np.pi /2, np.pi],[r'$-\pi$',r'$-\pi/2$','0',r'$\pi/2$',r'$\pi$'])
+
+
+
+plt.grid(axis='y',linewidth=0.3)
+plt.legend(['正弦','余弦'])
+plt.axvline(x=0,ymax=0.9,ymin=0.1,linestyle='--')
+plt.axhline(y=0,linestyle='--')
+
+
+plt.axvspan(xmin=0.5,xmax=2.0,alpha=0.3)
+plt.axhspan(ymin=0.5,ymax=1.0,alpha=0.3)
+
+plt.annotate('最小值',xy=(-np.pi/2,-1.0), xytext=(-np.pi/2,-0.5),arrowprops={"arrowstyle":'->'})
+plt.text(3.10,0.10,'y=sin(x)',bbox={'alpha':0.2})
+plt.table(cellText=[[6,6,6],[8,8,8]],colWidths=[0.1]* 3,rowLabels=['第一行','第二行'],colLabels=['第一列','第二列','第三列'],loc='lower right')
+plt.show()
+```
+
+![image-20250204132839166](https://db.xinghai.ink/Typora/1738646922873276.png)
+
+<h3>实例 六</h3>
+
+|配料名称|重量（g）|配料名称|重量（g）|
+| ---- | ---- | ---- | ---- |
+|面粉|250|全麦粉|150|
+|酵母|4|苹果酱|250|
+|鸡蛋|50|黄油|30|
+|盐|4|白糖|20|
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+plt.rcParams['font.family'] = 'SimHei'
+
+data1 = np.array([250, 150, 4, 250, 50, 30, 4, 20])
+data = data1 / data1.sum()
+labels = ['面粉', '全麦粉', '酵母', '苹果酱', '鸡蛋', '黄油', '盐', '白糖']
+plt.pie(data,autopct="%.2f%%")
+plt.legend(labels,loc='upper right',bbox_to_anchor=[1.2,1.1])
+plt.table(cellText=[data1],cellLoc='center',colLabels=labels,rowLabels=['重量(g)'],loc='lower center')
+plt.show()
+```
+
+![image-20250204154653949](https://db.xinghai.ink/Typora/17386552160733707.png)
+
+## 3.8    习题
+
+**在第2章编程题第1题的基础上定制柱形图，具体要求如下：**
+
+- （1）设置y轴的标签为“平均成绩（分）”；
+
+- （2）设置x轴的刻度标签位于两组柱形中间；
+- （3）添加标题为“高二男生、女生的平均成绩”；
+- （4）添加图例；
+- （5）向每个柱形的顶部添加注释文本，标注平均成绩。
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+plt.rcParams['font.family'] = ['SimHei']
+
+x = np.arange(6)
+y1 = [85.5,91,72,59,66,55]
+y2 = [94,82,89.5,62,49,53]
+
+label = ['语文','数学','英语','物理','化学','生物']
+
+bar1 = plt.bar(x,y1,width=0.3)
+bar2 = plt.bar(x+0.3,y2,width=0.3)
+
+# 第三章
+plt.ylabel('平均分')
+plt.xticks(np.array([0,1,2,3,4,5]) + 0.15,label)
+plt.title('高二男生、女生的平均成绩')
+plt.legend(['男生','女生'])
+for i in zip(bar1,bar2, y1, y2):
+    plt.text(i[0].get_x() + 0.15,i[0].get_height() + 1,i[2],ha='center')
+    plt.text(i[1].get_x() + 0.15,i[1].get_height() + 1,i[3],ha='center')
+
+plt.show()
+```
+
+![image-20250204171257461](https://db.xinghai.ink/Typora/17386603811572833.png)
+
+
+
+**在第2章编程题第2题的基础上定制饼图，具体要求如下：**
+
+- （1）添加标题为“拼多多平台子类目的销售额”；
+- （2）添加图例，以两列的形式进行显示;
+- （3）添加表格，说明子类目的销售额。
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+labels = ['童装', '奶粉辅食', '孕妈专区', '洗护喂养', '宝宝尿裤', '春夏新品', '童车童床', '玩具文娱', '童鞋']
+y = np.array([29665 , 3135.4, 4292.4, 5240.9, 5543.4, 5633.8, 6414.5, 9308.1, 10353])
+plt.pie(y,radius=1.3,autopct='%.2f%%',pctdistance=0.8,explode=[0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1],labels=labels)
+
+plt.legend(labels,loc='upper right',bbox_to_anchor=[1.7,1.1],ncol=2)
+
+plt.table(cellText=[y],cellLoc='center',colLabels=labels,rowLabels=['销售额'],loc='lower center',bbox=[0, -0.4,1, 0.2])
+plt.show()
+```
+
+![image-20250204174408186](https://db.xinghai.ink/Typora/17386622502619655.png)
+
+
+
+# 总结
+
+
+
 <div style="color:#e96900;float:right;"><sub style="background-color:#f8f8f8;font-weight:600;">2025年01月18日</sub></div>
 

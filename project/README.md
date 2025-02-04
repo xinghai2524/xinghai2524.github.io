@@ -23,8 +23,11 @@
 
 ### 🛠️ 见问题与解决方案
 
--  **[关于Linux中matplotlib没有SimHei中文字体的问题](/project/Linux_SimHei)**
--  **[现代前端开发工具链](./modern-frontend-toolchain.md)**
+- **[关于Linux中matplotlib没有SimHei中文字体的问题](/project/Linux_SimHei)** `2025-01-19` `Linux` `Python`
+
+- **[现代前端开发工具链](./modern-frontend-toolchain.md)**
+
+  
 
 
 ---

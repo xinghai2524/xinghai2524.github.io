@@ -1449,12 +1449,13 @@ echo "常用命令和工具包已安装完成。"
 
 ## 参考
 
--   [什么是容器](https://help.aliyun.com/zh/what-is/what-is-container)
--   [docker安装](https://blog.csdn.net/u011397981/article/details/130616038)
--   [镜像加速](https://help.aliyun.com/zh/acr/user-guide/accelerate-the-pulls-of-docker-official-images#section-hif-tpa-zl8)
--   [操作系统模板OpenVZ](https://wiki.openvz.org/Download/template/precreated)
--   [配置镜像仓库](https://help.aliyun.com/zh/acr/user-guide/create-a-container-registry-personal-edition-instance)
--   
+- 什么是容器？. (n.d.). https://www.aliyun.com/getting-started/what-is/what-is-container
 
-    
+- 逆流°只是风景-bjhxcc. (2023, May 11). *【Linux】Linux下安装Docker（图文解说详细版）*. CSDN. https://blog.csdn.net/u011397981/article/details/130616038
+
+- 官方镜像加速. (2024, December 13). Aliyun. https://help.aliyun.com/zh/acr/user-guide/accelerate-the-pulls-of-docker-official-images#section-hif-tpa-zl8
+
+- 创建个人版实例. (2024, October 18). Aliyun. https://help.aliyun.com/zh/acr/user-guide/create-a-container-registry-personal-edition-instance
+
+  
 
