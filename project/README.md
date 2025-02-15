@@ -9,17 +9,13 @@
 
 ### 📝 实用技术与工具
 
+- **[HDFS基本命令](/project/Hadoop/HDFS_H)**   `2024-02-14` `HDFS`  `Linux` 
+
 - **[Linux-Ubuntu中配置网络](/project/Linux/UbuntuNetWork)**   `2024-02-09` `NetWork`  `Linux` `netp`
 
 - **[Linux安装docker](/project/docker/install_docker)**   `2024-12-30` `docker`  `Linux`
 
 - **[MySql管理](/project/mysql)** 
-
-- **[深入理解 JavaScript 的闭包](./understanding-javascript-closures.md)**
-
-- **[使用 Vue.js 构建单页应用](./vuejs-single-page-app.md)**
-
-- **[REDME](https://raw.githubusercontent.com/xinghai-org/flask_ai/refs/heads/main/README.md)**
 
   
 

@@ -142,7 +142,7 @@ hdfs dfs -mv /bb/test2.txt /
 hdfs dfs -get <path>
 ```
 
-![image-20250214175658891](.HDFS_H_file/image-20250214175658891.png)
+![image-20250214175658891](.HDFS_H_file/17396309218551352.png)
 
 
 
