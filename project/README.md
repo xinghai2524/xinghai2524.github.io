@@ -9,6 +9,8 @@
 
 ### 📝 实用技术与工具
 
+- **[Linux-Ubuntu中配置网络](/project/Linux/UbuntuNetWork)**   `2024-02-09` `NetWork`  `Linux` `netp`
+
 - **[Linux安装docker](/project/docker/install_docker)**   `2024-12-30` `docker`  `Linux`
 
 - **[MySql管理](/project/mysql)** 
