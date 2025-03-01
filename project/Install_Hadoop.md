@@ -272,3 +272,5 @@ vim hadoop-env.sh
 ![image-20250210040912793](https://db.xinghai.ink/Typora/17391317545679104.png)
 
 加入`java`的目录即可
+
+![image-20250225230845659](https://db.xinghai.ink/Typora/17404961388048708.png)

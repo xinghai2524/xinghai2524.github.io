@@ -9,6 +9,8 @@
 
 ### 📝 实用技术与工具
 
+- **[Jupyter导出pdf时不显示中文的](/project/Jupyter_nbconvert)**   `2024-02-20` `Jupyter`  `Linux`
+
 - **[HDFS基本命令](/project/Hadoop/HDFS_H)**   `2024-02-14` `HDFS`  `Linux` 
 
 - **[Linux-Ubuntu中配置网络](/project/Linux/UbuntuNetWork)**   `2024-02-09` `NetWork`  `Linux` `netp`
