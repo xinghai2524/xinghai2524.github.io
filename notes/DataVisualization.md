@@ -948,7 +948,7 @@ import numpy as np
 
 plt.rcParams['font.family'] = ['SimHei']
 data_18 = np.array([5200  ,5254.5,5283.4,5107.8,5443.3,5550.6,6400.2,6404.9,5483.1,5330.2,5543  ,6199.9])
-data_17 = np.array([4605.2,4710.3,4767.2,4947  ,5203  ,6047.4,6047.4,5945.5,5219.6,5038.1,5196.3,5698.6])
+data_17 = np.array([4605.2,4710.3,5168.9,4767.2  ,4947  ,5203,6047.4,5945.5,5219.6,5038.1,5196.3,5698.6])
 
 # 绘制箱型图
 plt.boxplot([data_18,data_17],tick_labels=('2018年','2017年'),meanline=True,widths=0.5,vert=False,patch_artist=True)
@@ -1870,6 +1870,114 @@ plt.show()
 ```
 
 ![image-20250204174408186](https://db.xinghai.ink/Typora/17386622502619655.png)
+
+
+
+# 第四章
+
+## 4.1    图表样式概述
+
+`matplotlib`在绘图的过程中会读取存储在本地的配置文件`matplotlibrc`,通过`matplotlibrc`文件中的缺省文件配置信息指定图表元素中的默认样式，完成图表元素的初始设置
+
+**查看配置项**
+
+`matplotlibrc`文件中包含众多配置项，可以通过`rc_params()`查看全部的配置
+
+<h3>示例</h3>
+
+```python
+import matplotlib
+print(matplotlib.rc_params())
+```
+
+![image-20250311153323024](https://db.xinghai.ink/Typora/17416784066206782.png)
+
+**matplotlib的常用配置项**
+
+|配置项|说明|默认值|
+| ---- | ---- | ---- |
+|lines.color|线条颜色|'C0'|
+|lines.linestyle|线条类型|'-'|
+|lines.linewidth|线条宽度|1.5|
+|lines.marker|线条标记|'None'|
+|lines.markeredgecolor|标记边框颜色|'auto'|
+|lines.markeredgewidth|标记边框宽度|1.0|
+|lines.markerfacecolor|标记颜色|'auto'|
+|lines.markersize|标记大小|6.0|
+|font.family|系统字体|['sans-serif']|
+|font.sans-serif|无衬线字体|['DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'LucidaGrande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde sans-serif']|
+|font.size|字体大小|10.0|
+|font.style|字体风格|'normal'|
+|axes.unicode_minus|采用Unicode编码的减号|True|
+|axes.prop_cycle|属性循环器|cycler('color', ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf'])|
+|figure.constrained_layout.use|使用约束布局|False|
+
+**图表样式修改**
+
+图表样式可以通过两种方式修改：`局部修改和全局修改`
+
+全局修改就是直接修改`matplotlibrc`文件的配置项，此方法用于全局定制的需求（直接修改配置文件），`matplotlibrc`文件主要存在于三个路径，使用`matplotlib_fname()`函数可以查看当前的配置文件所在路径
+
+<h3>示例</h3>
+
+```python
+import matplotlib
+matplotlib.matplotlib_fname()
+```
+
+![image-20250311155629304](https://db.xinghai.ink/Typora/17416797917753582.png)
+
+## 4.2    使用颜色
+
+`matplotlib`的基础颜色主要有三种表示方式：单词缩写或单词、十六进制或HTML模式、RGB模式
+
+**单词缩写或单词表示的颜色**
+
+支持单词缩写和单词表示的颜色有八种：青色、洋红色、黄色、黑色、红色、绿色、白色、蓝色
+
+|单词缩写|单词|说明|
+| ---- | ---- | ---- |
+|c|cyan|青色|
+|m|magenta|洋红色|
+|y|yellow|黄色|
+|k|black|黑色|
+|r|red|红色|
+|g|green|绿色|
+|b|blue|蓝色|
+|w|white|白色|
+
+**十六进制或HTML表示颜色**
+
+使用`colors.cname`字典查看全部的颜色
+
+<h3>示例</h3>
+
+```python
+from matplotlib import colors
+colors.cnames
+```
+
+![image-20250311164103181](https://db.xinghai.ink/Typora/17416824660346649.png)
+
+<h3>实例 一</h3>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

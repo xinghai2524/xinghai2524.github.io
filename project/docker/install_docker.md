@@ -59,7 +59,7 @@ sudo usermod -aG docker <you_username>
 > 设置好组信息后，需要更新一下shell的组信息
 >
 > ```shell
-> xinghai@matebook:~$ newgrp docker
+> xinghai@matebook:~$ newgrp docker docker i
 > ```
 >
 > 现在使用一下docker

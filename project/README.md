@@ -9,6 +9,8 @@
 
 ### 📝 实用技术与工具
 
+- **[农业项目](/project/agriculture)**   `2024-03-12` `Python` `Yolo` 
+
 - **[Hive安装](/project/Hadoop/Hive)**   `2024-03-10` `Hadoop`  `Linux` `Hive`
 
 - **[Jupyter导出pdf时不显示中文的问题](/project/Jupyter_nbconvert)**   `2024-02-20` `Jupyter`  `Linux`
