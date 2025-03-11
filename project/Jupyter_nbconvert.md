@@ -15,3 +15,5 @@ pip install pandoc
 <h1>参考</h1>
 
 - Releseason. (2024, July 15). *Jupyter导出pdf或html时，显示中文并隐藏输入（有效版）*. CSDN. https://blog.csdn.net/qq_42535748/article/details/140437286
+
+![image-20250311062443314](.Jupyter_nbconvert_file/image-20250311062443314.png)

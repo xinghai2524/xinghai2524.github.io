@@ -9,7 +9,9 @@
 
 ### 📝 实用技术与工具
 
-- **[Jupyter导出pdf时不显示中文的](/project/Jupyter_nbconvert)**   `2024-02-20` `Jupyter`  `Linux`
+- **[Hive安装](/project/Hadoop/Hive)**   `2024-03-10` `Hadoop`  `Linux` `Hive`
+
+- **[Jupyter导出pdf时不显示中文的问题](/project/Jupyter_nbconvert)**   `2024-02-20` `Jupyter`  `Linux`
 
 - **[HDFS基本命令](/project/Hadoop/HDFS_H)**   `2024-02-14` `HDFS`  `Linux` 
 
