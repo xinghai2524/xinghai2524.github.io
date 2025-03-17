@@ -12,9 +12,9 @@
 
 - **[Docker 使用入门](/notes/docker.md)**
 
-- **[MongoDB 数据库操作](/notes/MongoDB.md)**
+- **[MongoDB 数据库操作](/notes/MongoDB)**
 
-- **[Vue.js 教程](/notes/vue.md)**
+- **[Vue.js 教程](/notes/ue.md)**
 
 - **[Python数据可视化](/notes/DataVisualization)** `2025-01-13`
 

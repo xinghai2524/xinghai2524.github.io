@@ -1,4 +1,5 @@
-<div class="container">
+
+
 
 # Python数据可视化</div>
 
@@ -1927,6 +1928,26 @@ matplotlib.matplotlib_fname()
 
 ![image-20250311155629304](https://db.xinghai.ink/Typora/17416797917753582.png)
 
+**局部样式修改**
+
+局部样式修改就是通过代码动态的修改matplotlib配置项，此方法用于满足局部定制的需求
+
+<h3>示例</h3>
+
+```python
+import matplotlib.pyplot as plt
+# 通过函数的参数配置局部样式
+plt.plot([1,2,3],[3,4,5],linewidth=3)
+# 通过rcParams 配置局部样式
+plt.rcParams['lines.linewidth'] = 3
+# 通过
+plt.show()
+```
+
+![image-20250316160810410](https://db.xinghai.ink/Typora/17421124933498366.png)
+
+
+
 ## 4.2    使用颜色
 
 `matplotlib`的基础颜色主要有三种表示方式：单词缩写或单词、十六进制或HTML模式、RGB模式
@@ -1946,11 +1967,9 @@ matplotlib.matplotlib_fname()
 |b|blue|蓝色|
 |w|white|白色|
 
-**十六进制或HTML表示颜色**
-
-使用`colors.cname`字典查看全部的颜色
-
 <h3>示例</h3>
+
+**使用`colors.cname`字典查看全部的颜色**
 
 ```python
 from matplotlib import colors
@@ -1961,7 +1980,294 @@ colors.cnames
 
 <h3>实例 一</h3>
 
- 
+**两个地区对不同种类图书的采购情况**
+
+|图书种类|地区1（本）|地区2（本）|
+| ---- | ---- | ---- |
+|家庭|1200|1050|
+|小说|2400|2100|
+|心理|1800|1300|
+|科技|2200|1600|
+|儿童|1600|1340|
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+y1 = [1200,2400,1800,2200,1600]
+y2 = [1050,2100,1300,1600,1340]
+x = np.arange(5)
+bar_width=0.6
+tick_labl= ['家庭','小说','心理','科技','儿童']
+fig = plt.figure()
+ax = fig.add_subplot(111)
+ax.bar(x,y1,color='#FFCC00',width=bar_width,align='center')
+ax.bar(x,y2,bottom=y1,color='#B0C4DE',width=bar_width,align='center')
+plt.show()
+```
+
+![image-20250317181626618](https://db.xinghai.ink/Typora/17422065896059484.png)
+
+
+
+## 4.3    选择线型
+
+图表中，每个线条均有不同含义，一般可以设置颜色、宽度、类型来区分线条
+
+| 线型取值 | 说明 | 样式 |
+| ---- | ---- | ---- |
+| `':'` | 短虚线 | ----------- |
+| `'-.'` | 点划线 | — - — . — |
+| `'--'` | 长虚线 | – – – – – |
+| `'-'` | 实线 | — |
+
+<h3>示例</h3>
+
+**使用`linestyl`或`ls`参数指定先调样式**
+
+```python
+plt.plot([1,2,3],[3,4,5],linestyle='--')
+plt.show()
+plt.plot([1,2,3],[3,4,5],ls='--')
+plt.show()
+```
+
+![image-20250317232902576](https://db.xinghai.ink/Typora/1742225344817913.png)
+
+![image-20250317232911141](https://db.xinghai.ink/Typora/1742225352891638.png)
+
+<h3>实例 二</h3>
+
+**2017年7月与2019年7月国际外汇市场美元/人民币汇率走势**
+
+
+|日期|2017年汇率|2019年汇率|
+| ---- | ---- | ---- |
+|3日 |6.8007|6.8640|
+|4日 |6.8007|6.8705|
+|5日 |6.8015|6.8697|
+|6日 |6.8015|6.8697|
+|7日 |6.8060|6.8697|
+|8日 |6.8060|6.8881|
+|9日 |6.8060|6.8853|
+|10日|6.8036|6.8856|
+|11日|6.8025|6.8677|
+|12日|6.7877|6.8662|
+|13日|6.7835|6.8662|
+|14日|6.7758|6.8662|
+|17日|6.7700|6.8827|
+|18日|6.7463|6.8761|
+|19日|6.7519|6.8635|
+|24日|6.7511|6.8860|
+|25日|6.7511|6.8737|
+|26日|6.7539|6.8796|
+|31日|6.7265|6.8841|
+
+```python
+import numpy  as np
+import matplotlib.pyplot as plt
+
+plt.rcParams['font.family'] = 'SimHei'
+
+eurcny_2017 = np.array([6.8007,6.8007,6.8015,6.8015,6.8060,6.8060,
+                        6.8060,6.8036,6.8025,6.7877,6.7835,6.7758,
+                        6.7700,6.7463,6.7519,6.7511,6.7511,6.7539,6.7265])
+
+eurcny_2019 = np.array([6.8640,6.8705,6.8697,6.8697,6.8697,6.8881,
+                        6.8853,6.8856,6.8677,6.8662,6.8662,6.8662,
+                        6.8827,6.8761,6.8635,6.8860,6.8737,6.8796,6.8841])
+
+date_x = np.array([3,4,5,6,7,8,9,10,11,12,13,14,17,18,19,24,25,26,31])
+
+plt.plot(date_x,eurcny_2017,color='#006374',linewidth=2,label='2017年7月美元/人民币汇率')
+plt.plot(date_x,eurcny_2019,color='#8a2e76',ls='--',linewidth=2,label='2019年7月美元/人民币汇率')
+
+
+plt.title('2017年7月与2019年7月国际外汇市场美元/人民币汇率走势')
+plt.xlabel('日期')
+plt.ylabel('汇率')
+plt.legend()
+plt.show()
+```
+
+![image-20250317235052441](https://db.xinghai.ink/Typora/1742226654552594.png)
+
+
+
+## 4.4    添加数据标记
+
+`mtplotlib`中默认隐藏折线图的书籍标记，数据标记用于强调点的位置，常用于折线图和散点图中
+
+|标记取值|样式|说明|标记取值|样式|说明|
+| ---- | ---- | ---- | ---- | ---- | ---- |
+|'s'|■|正方形|'x'|✖|叉形|
+|'8'|●|八边形|'p'|✚|十字交叉形|
+|'>'|▲|右三角|'d'|◇|长菱形|
+|'<'|▼|左三角|'D'|◆|正菱形|
+|'^'|△|正三角|'H'|♢|六边形1|
+|'v'|▽|倒三角|'h'|♤|六边形2|
+|'o'|○|圆形|'*'|★|星形|
+|'p'|♡|五边形|'+'|＋|加号|
+|','|·|像素点|'.'|•|点|
+|'1'|☰|下三叉|'2'|☱|上三叉|
+|'3'|☲|左三叉|'4'|☴|右三叉|
+|'-'|─|水平线|'x'|×|乘号|
+|'|'|┃|垂直线|0|─|水平线，位于基线左方|
+|1|─|水平线，位于基线右方|2|┐|垂直线，位于基线上方|
+|3|└|垂直线，位于基线下方|4|◀|朝左方向键，位于基线右方|
+|5|▶|朝右方向键，位于基线左方|6|▲|朝上方向键，位于基线下方|
+|7|▼|朝下方向键，位于基线上方|8|◀|朝左方向键，位于基线左方|
+|9|▶|朝右方向键，位于基线右方|10|▲|朝上方向键，位于基线上方|
+|11|▼|朝下方向键，位于基线下方|  |  |  |
+
+使用`pyplot`的`plot()`或`scatter()`函数时，可以将标记的取值产地给`marker`参数
+
+```python
+plt.plot([1,2,3],[3,4,5],marker='*')
+```
+
+此外
+
+- `markeredgecolor`或`mec`	表示标记边框的颜色
+- `markeredgewidth`或`mew`	表示标记边框的宽度
+- `markerfacecolor`或`mfc`	表示标记的填充颜色
+- `markerfacecoloralt`或`mfcalt`	表示标记备用的填充颜色
+- `markersize`或`ms`	表示标记的大小
+
+
+
+<h3>示例</h3>
+
+```python
+import matplotlib.pyplot as plt
+
+plt.plot([1,2,3],[3,4,5],ms=20,marker='*',mfc='y')
+plt.show()
+```
+
+![image-20250318000729257](https://db.xinghai.ink/Typora/17422276516430233.png)
+
+<h3>实例    三</h3>
+
+**标记不同产品各季度的销售额**
+
+|季度|产品A（万元）|产品B（万元）|产品C（万元）|
+| ---- | ---- | ---- | ---- |
+|第1季度|2144| 853|153|
+|第2季度|4617|1214|155|
+|第3季度|7674|2414|292|
+|第4季度|6666|4409|680|
+
+```python
+import matplotlib.pyplot as plt
+import numpy as  np
+
+plt.rcParams['font.family'] = 'SimHei'
+
+sale_a = [2144,4617,7674,6666]
+sale_b = [ 853,1214,2414,4409]
+sale_c = [153,155,292,680]
+
+plt.plot(sale_a, 'D-', sale_b, '^:', sale_c, 's--')
+
+plt.grid(alpha=0.3)
+plt.ylabel('销售额(万元)')
+plt.xticks(np.arange(len(sale_a)),['第一季度','第二季度','第三季度','第四季度'])
+plt.legend(['产品A','产品B','产品C'])
+plt.show()
+```
+
+![image-20250318002931004](https://db.xinghai.ink/Typora/17422289726917706.png)
+
+## 4.5    设置字体
+
+```python
+import matplotlib.pyplot as plt
+plt.plot([1,2,3],[3,4,5])
+plt.text(1.9, 3.75, 'y=x+2', bbox=dict(facecolor='y'), family='serif', fontsize=18, fontstyle='normal', rotation=-60)
+```
+
+![image-20250318003421653](https://db.xinghai.ink/Typora/17422292633445268.png)
+
+<h3>实例 四</h3>
+
+**未来15天的最高气温和最低气温（设置字体样式）**
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+plt.rcParams['font.family'] = 'Simhei'
+
+x = np.arange(4,19)
+y_max = np.array([32,33,33,34,34,31,30,29,30,29,26,23,21,25,31])
+y_min = np.array([19,19,20,22,22,21,22,16,18,18,17,14,15,16,16])
+
+plt.plot(x,y_max,marker='o',label='最高温度')
+plt.plot(x,y_min,marker='o',label='最低温度')
+
+x_temp = 4
+
+for y_h,y_l in zip(y_max,y_min):
+    plt.text(x_temp-0.3,y_h + 0.7,y_h,family='SimHei',fontsize=8,fontstyle='normal')
+    plt.text(x_temp-0.3,y_l + 0.7,y_l,family='SimHei',fontsize=8,fontstyle='normal')
+    x_temp += 1
+
+plt.title('未来15天的最高气温和最低气温')
+plt.xlabel('日期')
+plt.ylabel('温度(℃)')
+plt.legend()
+plt.ylim(0,40)
+plt.show()
+```
+
+![image-20250318004957662](https://db.xinghai.ink/Typora/17422301995434387.png)
+
+## 4.6    切换主题风格
+
+使用`sttyle.available`可以查看`matplotlib`的所有可用的主题风格
+
+```python
+import matplotlib.style as ms
+
+ms.available
+```
+
+![image-20250318005528929](https://db.xinghai.ink/Typora/17422305307848701.png)
+
+<h3>示例</h3>
+
+使用`style.use`可以切换主题风
+
+```python
+import matplotlib.style as ms
+import matplotlib.pyplot as plt
+ms.use('seaborn-v0_8-dark')
+plt.plot([1,2,3],[3,4,5],ms=20,marker='*',mfc='y')
+plt.show()
+ms.use('ggplot')
+plt.plot([1,2,3],[3,4,5],ms=20,marker='*',mfc='y')
+plt.show()
+```
+
+![image-20250318005832894](https://db.xinghai.ink/Typora/17422307147713187.png)
+
+![image-20250318005841689](https://db.xinghai.ink/Typora/17422307235466833.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
