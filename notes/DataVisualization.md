@@ -2254,39 +2254,171 @@ plt.show()
 
 ![image-20250318005841689](https://db.xinghai.ink/Typora/17422307235466833.png)
 
+## 4.7    填充区域
+
+`matplotlib`中提供多个函数用于填充多边形或区域 `fill()`函数用于填充多边形,`fill_between()`或`fill_betweenx()`用于填充两条水平线或垂直曲线之间的区域
 
 
 
+`fill()`函数语法如下
+
+```python
+fill(*args,data=None,facecolor,edgecolor,linewidt,**kwargs)
+```
+
+- *args	表示x轴坐标和y轴坐标
+- facecolor	表示填充的背景颜色
+- edgecolor	表示边框的颜色
+- linewidth	表示边框的宽度
+
+<h3>示例</h3>
+
+```python
+import matplotlib.pyplot as plt
+
+plt.fill([1, 2, 3, 2, 1], [1, 2, 1, 0, 1],'b')
+plt.show()
+```
+
+![image-20250318092513264](https://db.xinghai.ink/Typora/1742261116373185.png)
+
+**`full_between()`函数语法如下**
+
+```python
+fill_between(x, y1, y2, where=None, interpolate=False, setp=None, data=NOne, **kwarg)
+```
+
+- x	表示x轴坐标的序列
+- y1	第一条曲线的y轴坐标
+- y2	第二条曲线的y轴坐标
+- where	布尔值序列，表示要填充区域的条件
+
+<h3>实例 五</h3>
+
+**彩色的雪花**（没理解，只有上帝看得懂）
+
+```python
+# 05_colorful_snowflakes
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+def koch_snowflake(order, scale=10):
+    def _koch_snowflake_complex(order):
+        if order == 0:
+            # 初始三角形
+            angles = np.array([0, 120, 240]) + 90
+            return scale / np.sqrt(3) * np.exp(np.deg2rad(angles) * 1j)
+        else:
+            ZR = 0.5 - 0.5j * np.sqrt(3) / 3
+            p1 = _koch_snowflake_complex(order - 1)  # 起点
+            p2 = np.roll(p1, shift=-1)  # 终点
+            dp = p2 - p1  # 连接向量
+            new_points = np.empty(len(p1) * 4, dtype=np.complex128)
+            new_points[::4] = p1
+            new_points[1::4] = p1 + dp / 3
+            new_points[2::4] = p1 + dp * ZR
+            new_points[3::4] = p1 + dp / 3 * 2
+            return new_points
+
+    points = _koch_snowflake_complex(order)
+    x, y = points.real, points.imag
+    return x, y
+
+
+x, y = koch_snowflake(order=2)
+fig = plt.figure()
+ax = fig.add_subplot(111)
+ax.fill(x, y, facecolor='lightsalmon', edgecolor='orangered', linewidth=3)
+plt.show()
+```
+
+![image-20250318125225117](https://db.xinghai.ink/Typora/1742273546971529.png)
+
+## 4.8    习题
+
+**已知2018年、2019年物流行业的快递业务量**
+
+|月份|2018年业务量（亿件）|2019年业务量（亿件）|
+| ---- | ---- | ---- |
+| 1月|39|45|
+| 2月|20|28|
+| 3月|40|48|
+| 4月|38|49|
+| 5月|42|50|
+| 6月|43|51|
+| 7月|41|50|
+| 8月|41|50|
+| 9月|45|51|
+|10月|48|52|
+|11月|52|70|
+|12月|50|65|
+
+**第一题**
+
+根据表中2018年、2019年物流行业快递业务量数据绘制图表，具体要求如下：
+
+1. 绘制反映2018年、2019年快递业务量趋势的折线图。
+2. 折线图的x轴为月份；y轴为业务量，y轴的标签为“业务量（亿件）”。
+3. 代表2018年的折线样式：颜色为“#8B0000”，标记为正三角形，线型为长虚线，线宽为1.5。
+4. 代表2019年的折线样式：颜色为“#006374”，标记为长菱形，线型为实线，线宽为1.5。
+5. 折线图的主题风格切换为“fivethirtyeight”。
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+import matplotlib.style as ms
+
+plt.rcParams['font.family'] = 'SimHei'
+
+y_2018 = [39,20,40,38,42,43,41,41,45,48,52,50]
+y_2019 = [45,28,48,49,50,51,50,50,51,52,70,65]
+x = np.arange(1,13)
+
+plt.plot(x,y_2018,color='#8B0000',marker='^',ls='--',lw=1.5)
+plt.plot(x,y_2019,color='#006374',marker='d',ls='-',lw=1.5)
+
+plt.xlabel('月份')
+plt.ylabel('业务量(亿件)')
+ms.use('fivethirtyeight')
+
+plt.show()
+```
+
+![image-20250318132229261](https://db.xinghai.ink/Typora/17422753510773766.png)
 
 
 
+第二题
 
+绘制一个包含正弦曲线和余弦曲线的图表，具体要求如下：
 
+1. 正弦曲线的样式：红色，线宽为1.0。
+2. 余弦曲线的样式：蓝色，线宽为1.0，透明度为0.5。
+3. x轴的刻度标签为 -π, -π/2, 0, π/2, π。
+4. 在x = 1, y = np.cos(1)的位置添加指向型注释文本。
+5. 填充|x| < 0.5或cosx > 0.5的区域为绿色，透明度为0.25。
 
+```python
+import numpy as np
+import matplotlib.pyplot as plt
 
+x = np.arange(-np.pi, np.pi, 0.1)
 
+sinx = np.sin(x)
+cosx = np.cos(x)
 
+plt.plot(x, sinx, color='red', linewidth=1.0, label='sin(x)')
+plt.plot(x, cosx, color='blue', linewidth=1.0, alpha=0.5, label='cos(x)')
 
+plt.xticks([-np.pi, -np.pi/2, 0, np.pi/2, np.pi], ['-π', '-π/2', '0', 'π/2', 'π'])
+plt.annotate('cos(1)', xy=(1, np.cos(1)), xytext=(1.5, 0.5), arrowprops={"arrowstyle":'->'})
+plt.fill_between(x, cosx, where=(np.abs(x) < 0.5) | (cosx > 0.5), color='green', alpha=0.25)
 
+plt.show()
+```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![image-20250318144226103](https://db.xinghai.ink/Typora/17422801487492075.png)
 
 
 <div style="color:#e96900;float:right;"><sub style="background-color:#f8f8f8;font-weight:600;">2025年01月18日</sub></div>
