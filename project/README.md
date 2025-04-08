@@ -9,11 +9,11 @@
 
 ### 📝 实用技术与工具
 
+- **[Linux磁盘管理](project/Linux/disk)**   `2024-03-20` `disk`  `Linux`
+
 - **[农业项目](/project/agriculture)**   `2024-03-12` `Python` `Yolo` 
 
 - **[Hive安装](/project/Hadoop/Hive)**   `2024-03-10` `Hadoop`  `Linux` `Hive`
-
-- **[Jupyter导出pdf时不显示中文的问题](/project/Jupyter_nbconvert)**   `2024-02-20` `Jupyter`  `Linux`
 
 - **[HDFS基本命令](/project/Hadoop/HDFS_H)**   `2024-02-14` `HDFS`  `Linux` 
 
@@ -27,9 +27,9 @@
 
 ### 🛠️ 见问题与解决方案
 
-- **[关于Linux中matplotlib没有SimHei中文字体的问题](/project/Linux_SimHei)** `2025-01-19` `Linux` `Python`
+- **[Jupyter导出pdf时不显示中文的问题](/project/Jupyter_nbconvert)**   `2024-02-20` `Jupyter`  `Linux`
 
-- **[现代前端开发工具链](./modern-frontend-toolchain.md)**
+- **[关于Linux中matplotlib没有SimHei中文字体的问题](/project/Linux_SimHei)** `2025-01-19` `Linux` `Python`
 
   
 

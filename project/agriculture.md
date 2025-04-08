@@ -6,6 +6,7 @@
 <video src="https://db.xinghai.ink/video/1741713152351792.mp4" style="width:100%;" controls>
 </div>
 
+
 ## 1.1    环境配置
 
 **打开浏览器，搜索飞桨**

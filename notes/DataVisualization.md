@@ -1,5 +1,4 @@
-
-
+<div class="container">
 
 # Python数据可视化</div>
 
@@ -2419,6 +2418,117 @@ plt.show()
 ```
 
 ![image-20250318144226103](https://db.xinghai.ink/Typora/17422801487492075.png)
+
+
+
+
+
+
+
+# 第五章
+
+matplotlib 可以将整个画布规划成等分布局的`m x n(行 × 列)`的矩阵区域，并按照先行后列的方式对每个区域进行编号（编号从1开始）
+
+## 5.1    绘制单子图
+
+使用`pyplot`的`subplot()`函数可以在规划好的某个区域中绘制单子图，`subplot()`函数的语法格式如下
+
+```python
+subplot(nrows,ncols, index, projection, polar, sharex, sharey, label, **kwargs)
+```
+
+该函数常用参数含义如下
+
+- nrows	表示规划区的行数
+- ncols	表示规划区的列数
+- index	表示规划区的索引
+- projection	表示子图的索引类型，可以为 None, aitoff, hammer, lambert, mollweide
+
+
+
+<h3>示例</h3>
+
+```python
+import matplotlib.pyplot as plt
+
+
+ax1 = plt.subplot(326)
+ax1.plot([1,2,3,4,5])
+
+ax2 = plt.subplot(312)
+ax2.plot([1,2,3,4,5])
+
+plt.show()
+```
+
+![image-20250404184901444](https://db.xinghai.ink/Typora/17437637446514373.png)
+
+<h3>实例 一</h3>
+
+某工厂产品A与产品B去年的销量额分析
+
+|月份|产品A的销售额（亿元）|产品B的销售额（亿元）|
+| ---- | ---- | ---- |
+|1|20|17|
+|2|28|22|
+|3|23|39|
+|4|16|26|
+|5|29|35|
+|6|36|23|
+|7|39|25|
+|8|33|27|
+|9|31|29|
+|10|19|38|
+|11|21|28|
+|12|25|20|
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+plt.rcParams['font.sans-serif'] = "SimHei"
+x = np.arange(1,13)
+y1 = [20, 28, 23, 16, 29, 36, 39, 33, 31, 19, 21, 25]
+y2 = [17, 22, 39, 26, 35, 23, 25, 27, 29, 38, 28, 20]
+labels = [f"{i}月" for i in x]
+
+a1 = plt.subplot(211)
+a1.plot(x, y1, 'm--o', lw=2, ms=5, label='产品A')
+a1.plot(x, y2, 'g--o', lw=2, ms=5, label='产品B')
+a1.set_title("产品A 与产品B的销售额", fontsize=11)
+a1.set_ylim(10, 45)
+a1.set_ylabel('销售额(亿元)')
+a1.set_xlabel('月份')
+
+for xy in zip(x, y1, y2):
+    a1.annotate(f"{xy[1]}" , xy=(xy[0],xy[1]), xytext=(xy[0]-0.125,xy[1]+1))
+    a1.annotate(f"{xy[2]}", xy=(xy[0],xy[2]), xytext=(xy[0]-0.125,xy[2]+1))
+a1.legend()
+
+a2 = plt.subplot(223)
+a2.pie(y1, radius=1, wedgeprops={'width':0.5}, labels=labels, autopct='%3.1f%%', pctdistance=0.75)
+a2.set_title('产品A的销售额 ')
+
+a3 = plt.subplot(224)
+a3.pie(y2, radius=1, wedgeprops={'width':0.5}, labels=labels,autopct='%3.1f%%', pctdistance=0.75)
+a3.set_title('产品B的销售额 ')
+
+plt.tight_layout()
+plt.show()
+```
+
+![image-20250404192718497](.DataVisualization_file/image-20250404192718497.png)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <div style="color:#e96900;float:right;"><sub style="background-color:#f8f8f8;font-weight:600;">2025年01月18日</sub></div>
