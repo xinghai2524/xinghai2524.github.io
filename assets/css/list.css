@@ -1,0 +1,98 @@
+/* styles.css */ /* 保持文档全局样式不变 */
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #fafdf74d; /* 淡灰色背景 */
+  color: #333; /* 默认文字颜色 */
+  line-height: 1.6; /* 增加行间距 */
+  margin: 0;
+  padding: 0;
+} /* 文章列表部分样式 */
+.container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px; /* 添加内边距 */
+} /* 主页标题样式 */
+.container h1 {
+  color: #333;
+  text-align: center;
+  font-size: 3em;
+  font-weight: 700;
+  margin-bottom: 30px; /* 增加标题底部间距 */
+} /* 文章分类标题样式 */
+.container h2 {
+  color: #444;
+  font-size: 1.8em;
+  margin-top: 40px;
+  margin-bottom: 20px; /* 增加分类标题与内容之间的间距 */
+  font-weight: 600;
+}
+文章列表样式.container ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 20px;
+} /* 每个文章项（卡片） */
+.container ul li {
+  background-color: #ffffff; /* 卡片背景色 */
+  margin: 20px 0; /* 增加卡片之间的间距 */
+  padding: 20px;
+  border-radius: 10px; /* 圆角效果 */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* 更大的阴影 */
+  transition: all 0.3s ease;
+  display: flex; /* 使用 flexbox 进行对齐 */
+  align-items: center; /* 垂直居中对齐 */
+}
+.container ul li:hover {
+  transform: translateY(-5px); /* 悬浮效果 */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* 悬浮时更大的阴影 */
+} /* 文章链接样式 */
+.container ul li a {
+  text-decoration: none;
+  color: #6a9b9f; /* 淡雅蓝绿色 */
+  font-weight: 600;
+  font-size: 1.2em; /* 增大字体大小 */
+  display: block;
+  transition: color 0.3s ease;
+  line-height: 1.4;
+}
+.container ul li a:hover {
+  color: #4b7777; /* 悬停时使用更深的蓝绿色 */
+  text-decoration: underline;
+} /* 为文章链接增加间距，避免文字拥挤 */
+.container ul li a {
+  margin-top: 1px;
+} /* 防止对侧边栏的影响 */
+#sidebar {
+  background-color: #ffffff; /* 侧边栏背景色 */
+  padding: 20px;
+  border-radius: 10px; /* 圆角效果 */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+}
+#sidebar a {
+  color: #6a9b9f; /* 侧边栏链接颜色 */
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1em;
+  margin-bottom: 1px;
+  display: block;
+  transition: color 0.3s ease;
+}
+#sidebar a:hover {
+  color: #4b7777; /* 侧边栏悬停颜色 */
+} /* 响应式设计：确保在手机屏幕上排版不会拥挤 */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 10px; /* 增加左右间距 */
+  }
+  .container h1 {
+    font-size: 2.2em; /* 减小标题大小 */
+  }
+  .container ul li {
+    padding: 15px; /* 减小卡片内边距 */
+  }
+  .container ul li a {
+    font-size: 1.1em; /* 减小链接字体大小 */
+  }
+  #sidebar {
+    padding: 15px; /* 减小侧边栏内边距 */
+  }
+}
